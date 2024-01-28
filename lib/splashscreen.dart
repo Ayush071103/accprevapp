@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'package:testing/main.dart';
-import 'package:testing/onboarding.dart';
+import 'package:accprevapp/main.dart';
+import 'package:accprevapp/onboarding.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -55,6 +55,12 @@ class _splashscreenstate extends State<splashscreen> with SingleTickerProviderSt
       _visible = !_visible;
     });
     startTime();
+  }
+
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
   }
 
   @override

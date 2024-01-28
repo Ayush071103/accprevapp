@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:testing/content_model.dart';
-import 'package:testing/home.dart';
-import 'package:testing/loginpage.dart';
+import 'package:accprevapp/content_model.dart';
+import 'package:accprevapp/home.dart';
+
 
 class onboarding extends StatefulWidget {
   @override
