@@ -21,7 +21,7 @@ class WalkthroughState extends State<Walkthrough> with TickerProviderStateMixin 
     var screens = IntroScreens(
       onDone: () => Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (context) => loginpage(),
+          builder: (context) => onboarding(),
         ),
       ),
       onSkip: () => print('Skipping the intro slides'),
