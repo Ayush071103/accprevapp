@@ -1,5 +1,9 @@
+import 'package:accprevapp/buy.dart';
+import 'package:accprevapp/message.dart';
 import 'package:flutter/material.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
+import 'package:accprevapp/homepageinner.dart';
+import 'package:accprevapp/profilepage.dart';
 
 class Homepage extends StatefulWidget{
   @override
@@ -11,29 +15,31 @@ class Homepage extends StatefulWidget{
 }
 
 class homepagestate extends State<Homepage>{
-  int selectedpage = 0 ;
+  int selectedpage =0;
+  final _pageNo = [Profilepage() , Buypage() , homepageinner() , Messagepage()];
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return Scaffold(  bottomNavigationBar: ConvexAppBar(
-      initialActiveIndex: selectedpage,
+    return Scaffold(
 
-      items: [
-        TabItem(icon: Icons.people, title: 'Profile', ),
-        TabItem(icon: Icons.add_shopping_cart, title: 'Buy'),
-        TabItem(icon: Icons.home, title: 'Home'),
-        TabItem(icon: Icons.message, title: 'Message'),
-
-      ],
-      onTap: (int index){
-        setState(() {
-          selectedpage = index;
-        });
-      },
-    ),
+      body: _pageNo[selectedpage],
+      bottomNavigationBar: ConvexAppBar(
+        items: [
+          TabItem(icon: Icons.person, title: 'Profile'),
+          TabItem(icon: Icons.add_shopping_cart, title: 'Buy'),
+          TabItem(icon: Icons.home, title: 'Home'),
+          TabItem(icon: Icons.message, title: 'Message'),
+        ],
+        initialActiveIndex: selectedpage,
+        onTap: (int index){
+          setState(() {
+            selectedpage = index;
+          });
+        },
+      ),
     );
+  }
 
 
   }
 
-}
