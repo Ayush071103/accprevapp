@@ -1,4 +1,4 @@
-import 'package:accprevapp/home.dart';
+import 'package:accprevapp/home_page/home.dart';
 import 'package:accprevapp/singuppage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

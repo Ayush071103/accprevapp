@@ -1,9 +1,9 @@
-import 'package:accprevapp/buy.dart';
+import 'package:accprevapp/home_page/buy.dart';
 import 'package:accprevapp/message.dart';
 import 'package:flutter/material.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
-import 'package:accprevapp/homepageinner.dart';
-import 'package:accprevapp/profilepage.dart';
+import 'package:accprevapp/home_page/homepageinner.dart';
+import 'package:accprevapp/home_page/profilepage.dart';
 
 class Homepage extends StatefulWidget{
   @override
