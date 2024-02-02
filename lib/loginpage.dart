@@ -1,3 +1,5 @@
+import 'package:accprevapp/home.dart';
+import 'package:accprevapp/singuppage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -56,7 +58,7 @@ class LoginPage extends StatelessWidget {
                     padding: EdgeInsets.only(top: 3, left: 3),
                     decoration:
                     BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
+                        borderRadius: BorderRadius.circular(45),
                         border: Border(
                           bottom: BorderSide(color: Colors.black),
                           top: BorderSide(color: Colors.black),
@@ -71,21 +73,29 @@ class LoginPage extends StatelessWidget {
                     child: MaterialButton(
                       minWidth: double.infinity,
                       height: 60,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) =>
+                                Homepage(),
+                          ),
+                        );
+                      },
                       color: Color(0xff0095FF),
                       elevation: 0,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
+                        borderRadius: BorderRadius.circular(45),
 
                       ),
-                      child: Text(
-                        "Login", style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 18,
-                        color: Colors.white,
-
+                      child: GestureDetector(child:
+                      Text(" Login", style:TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18
                       ),
-                      ),
+                      ),onTap: () {
+                        Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => LoginPage()),);},)
 
                     ),
                   ),
@@ -96,11 +106,15 @@ class LoginPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text("Don't have an account?"),
-                    Text(" Sign up", style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 18,
+                    GestureDetector(child:
+                    Text(" Sign Up", style:TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 18
+                    ),
+                    ),onTap: () {
+                      Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => SignupPage()),);},)
 
-                    ),)
                   ],
                 ),
 

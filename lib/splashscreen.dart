@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:accprevapp/main.dart';
 import 'package:accprevapp/onboarding.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -74,7 +73,7 @@ class _splashscreenstate extends State<splashscreen> with SingleTickerProviderSt
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Padding(padding: EdgeInsets.all(24),
-                child:Lottie.asset("assets/images/Animation - 1704817032444.json",repeat: false) ,),
+                child:Lottie.asset("assets/Animation - 1706849204338.json",repeat: false) ,),
               Text('Accident Prevention App ',
                 style: TextStyle(
                     color: Color(0xFF032737),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:accprevapp/content_model.dart';
-import 'package:accprevapp/home.dart';
+import 'package:accprevapp/welcome.dart';
 
 
 class onboarding extends StatefulWidget {
@@ -44,9 +43,8 @@ class _onboardingState extends State<onboarding> {
                   padding: const EdgeInsets.all(40),
                   child: Column(
                     children: [
-                      SvgPicture.asset(
-                        contents[i].image,
-                        height: 300,
+                      Image.asset(contents[i].image,
+                        height: 300
                       ),
                       Text(
                         contents[i].title,
@@ -92,7 +90,7 @@ class _onboardingState extends State<onboarding> {
                     context,
                     MaterialPageRoute(
                       builder: (_) =>
-                          HomePage(),
+                          WelcomePage(),
                     ),
                   );
                 }

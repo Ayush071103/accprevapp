@@ -1,3 +1,4 @@
+import 'package:accprevapp/loginpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -98,11 +99,14 @@ class SignupPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text("Already have an account?"),
+                  GestureDetector(child:
                   Text(" Login", style:TextStyle(
                       fontWeight: FontWeight.w600,
                       fontSize: 18
                   ),
-                  )
+                  ),onTap: () {
+    Navigator.push(context,
+    MaterialPageRoute(builder: (context) => LoginPage()),);},)
                 ],
               )
 
