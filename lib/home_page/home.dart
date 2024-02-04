@@ -1,5 +1,5 @@
 import 'package:accprevapp/home_page/buy.dart';
-import 'package:accprevapp/message.dart';
+import 'package:accprevapp/home_page/message.dart';
 import 'package:flutter/material.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:accprevapp/home_page/homepageinner.dart';
@@ -16,7 +16,7 @@ class Homepage extends StatefulWidget{
 
 class homepagestate extends State<Homepage>{
   int selectedpage =0;
-  final _pageNo = [Profilepage() , Buypage() , homepageinner() , Messagepage()];
+  final _pageNo = [ProfilePage(), Buypage() , homepageinner() , Messagepage()];
 
   @override
   Widget build(BuildContext context) {
