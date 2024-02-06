@@ -3,7 +3,7 @@ import 'package:accprevapp/home_page/message.dart';
 import 'package:flutter/material.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:accprevapp/home_page/homepageinner.dart';
-import 'package:accprevapp/home_page/profilepage.dart';
+import 'package:accprevapp/home_page/Profile_page/profilepage.dart';
 
 class Homepage extends StatefulWidget{
   @override
