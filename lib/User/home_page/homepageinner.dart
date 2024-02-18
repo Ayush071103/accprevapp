@@ -1,7 +1,7 @@
-import 'package:accprevapp/home_page/sensors/MQ4GAS_sensor.dart';
-import 'package:accprevapp/home_page/sensors/Temperature_sensor.dart';
-import 'package:accprevapp/home_page/sensors/flame_sensor.dart';
-import 'package:accprevapp/home_page/sensors/smoke_sensor.dart';
+import 'package:accprevapp/User/home_page/sensors/MQ4GAS_sensor.dart';
+import 'package:accprevapp/User/home_page/sensors/Temperature_sensor.dart';
+import 'package:accprevapp/User/home_page/sensors/flame_sensor.dart';
+import 'package:accprevapp/User/home_page/sensors/smoke_sensor.dart';
 import 'package:flutter/material.dart';
 
 class homepageinner extends StatefulWidget{

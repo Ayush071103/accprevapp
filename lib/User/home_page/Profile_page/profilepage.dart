@@ -1,13 +1,13 @@
 import 'dart:async';
 
-import 'package:accprevapp/home_page/Profile_page/edit_address.dart';
-import 'package:accprevapp/home_page/Profile_page/edit_email.dart';
-import 'package:accprevapp/home_page/Profile_page/edit_image.dart';
-import 'package:accprevapp/home_page/Profile_page/edit_name.dart';
-import 'package:accprevapp/home_page/Profile_page/edit_phone.dart';
+import 'package:accprevapp/User/home_page/Profile_page/edit_address.dart';
+import 'package:accprevapp/User/home_page/Profile_page/edit_email.dart';
+import 'package:accprevapp/User/home_page/Profile_page/edit_image.dart';
+import 'package:accprevapp/User/home_page/Profile_page/edit_name.dart';
+import 'package:accprevapp/User/home_page/Profile_page/edit_phone.dart';
 import 'package:flutter/material.dart';
 import 'package:string_validator/string_validator.dart';
-import 'package:accprevapp/home_page/Profile_page/user_data.dart';
+import 'package:accprevapp/User/home_page/Profile_page/user_data.dart';
 import '../widgets/display_image_widget.dart';
 
 class ProfilePage extends StatefulWidget {
