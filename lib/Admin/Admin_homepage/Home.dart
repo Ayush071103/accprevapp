@@ -18,7 +18,7 @@ class Homepage extends StatefulWidget{
 
 class homepagestate extends State<Homepage>{
   int selectedpage =0;
-  final _pageNo = [Admin_profilepage(), Userrequestpage() , Adminhomepage() , Adminmessagepage()];
+  final _pageNo = [Admin_profilepage(),];
 
   @override
   Widget build(BuildContext context) {
