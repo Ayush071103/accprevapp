@@ -3,6 +3,7 @@ import 'package:accprevapp/User/home_page/sensors/Temperature_sensor.dart';
 import 'package:accprevapp/User/home_page/sensors/flame_sensor.dart';
 import 'package:accprevapp/User/home_page/sensors/smoke_sensor.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class homepageinner extends StatefulWidget{
   @override
@@ -24,57 +25,40 @@ class homepageinnerstate extends State<homepageinner>{
     Navigator.push(context,
     MaterialPageRoute(builder: (context) => flamesensor()),);},
           child:
-          Card(
-            elevation: 10.0,
-            shadowColor: Colors.green,
-            margin: EdgeInsets.all(10.0),
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(10.0),
-                  topRight: Radius.circular(10.0),
-                  bottomLeft: Radius.circular(10.0),
-                  bottomRight: Radius.circular(10.0),
-                )),
-            child: Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    //Image.network(src)
-                    SizedBox(
-                      height: 8,
-                    ),
-                    Text(
-                      'Flame Sensor',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "RATING",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                          maxLines: 1,
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              "4.5",
-                            ),
-                            Icon(Icons.star),
-                            Icon(Icons.star),
-                            Icon(Icons.star),
-                            Icon(Icons.star),
-                            Icon(Icons.star_half),
-                          ],
-                        )
-                      ],
-                    ),
-                  ]),
+          Container(
+            width: double.infinity,
+            child: Card(
+              elevation: 10.0,
+              shadowColor: Colors.green,
+              margin: EdgeInsets.all(10.0),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10.0),
+                    topRight: Radius.circular(10.0),
+                    bottomLeft: Radius.circular(10.0),
+                    bottomRight: Radius.circular(10.0),
+                  )),
+              child: Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Lottie.asset('assets/flame.json',height: 100, width: 100,),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Text(
+                        'Flame Sensor',
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
 
+                    ]),
+
+              ),
             ),
           ),),GestureDetector(
           onTap:  () {
@@ -97,7 +81,8 @@ class homepageinnerstate extends State<homepageinner>{
               child: Padding(
                 padding: EdgeInsets.all(16.0),
                 child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       //Image.network(src)
                       SizedBox(
@@ -105,33 +90,12 @@ class homepageinnerstate extends State<homepageinner>{
                       ),
                       Text(
                         '	MQ4GAS Sensor',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                       ),
                       SizedBox(
                         height: 8,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "RATING",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                            maxLines: 1,
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                "4.5",
-                              ),
-                              Icon(Icons.star),
-                              Icon(Icons.star),
-                              Icon(Icons.star),
-                              Icon(Icons.star),
-                              Icon(Icons.star_half),
-                            ],
-                          )
-                        ],
-                      ),
+
                     ]),
 
               ),
@@ -156,7 +120,8 @@ class homepageinnerstate extends State<homepageinner>{
               child: Padding(
                 padding: EdgeInsets.all(16.0),
                 child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       //Image.network(src)
                       SizedBox(
@@ -164,33 +129,13 @@ class homepageinnerstate extends State<homepageinner>{
                       ),
                       Text(
                         'Smoke Sensor',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),
                       ),
                       SizedBox(
                         height: 8,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "RATING",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                            maxLines: 1,
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                "4.5",
-                              ),
-                              Icon(Icons.star),
-                              Icon(Icons.star),
-                              Icon(Icons.star),
-                              Icon(Icons.star),
-                              Icon(Icons.star_half),
-                            ],
-                          )
-                        ],
-                      ),
+
+
                     ]),
 
               ),
@@ -215,7 +160,8 @@ class homepageinnerstate extends State<homepageinner>{
               child: Padding(
                 padding: EdgeInsets.all(16.0),
                 child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       //Image.network(src)
                       SizedBox(
@@ -223,39 +169,17 @@ class homepageinnerstate extends State<homepageinner>{
                       ),
                       Text(
                        'Temperature	Sensor',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                       ),
                       SizedBox(
                         height: 8,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "RATING",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                            maxLines: 1,
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                "4.5",
-                              ),
-                              Icon(Icons.star),
-                              Icon(Icons.star),
-                              Icon(Icons.star),
-                              Icon(Icons.star),
-                              Icon(Icons.star_half),
-                            ],
-                          )
-                        ],
-                      ),
-                    ]),
 
-              ),
+
+              ]),
             ),),),
 
-        ],
+          )],
       ),
     );
   }
