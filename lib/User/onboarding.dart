@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:accprevapp/content_model.dart';
-import 'package:accprevapp/welcome.dart';
+import 'package:accprevapp/User/content_model.dart';
+import 'package:accprevapp/User/welcome.dart';
 
 
 class onboarding extends StatefulWidget {

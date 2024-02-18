@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:accprevapp/onboarding.dart';
+import 'package:accprevapp/User/onboarding.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 

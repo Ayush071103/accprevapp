@@ -1,39 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:accprevapp/home_page/Profile_page/profilepage.dart';
-import 'package:string_validator/string_validator.dart';
-import 'package:accprevapp/home_page/Profile_page/user_data.dart';
 
 
-// This class handles the Page to edit the Phone Section of the User Profile.
-class edit_phone extends StatefulWidget {
+import 'package:email_validator/email_validator.dart';
+import 'package:accprevapp/User/home_page/Profile_page/user_data.dart';
+
+// This class handles the Page to edit the Email Section of the User Profile.
+class edit_email extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-   return edit_phonestate();
+    return edit_emailstate();
   }
 
-  }
+}
 
-
-class edit_phonestate  extends State<edit_phone> {
+class edit_emailstate extends State<edit_email> {
   final _formKey = GlobalKey<FormState>();
-  final phoneController = TextEditingController();
+  final emailController = TextEditingController();
   var user = UserData.myUser;
 
   @override
   void dispose() {
-    phoneController.dispose();
+    emailController.dispose();
     super.dispose();
   }
 
-  void updateUserValue(String phone) {
-    String formattedPhoneNumber = "(" +
-        phone.substring(0, 3) +
-        ") " +
-        phone.substring(3, 6) +
-        "-" +
-        phone.substring(6, phone.length);
-    user.phone = formattedPhoneNumber;
+  void updateUserValue(String email) {
+    user.email = email;
   }
 
   @override
@@ -49,9 +42,10 @@ class edit_phonestate  extends State<edit_phone> {
                 SizedBox(
                     width: 320,
                     child: const Text(
-                      "What's Your Phone Number?",
+                      "What's your email?",
                       style:
-                      TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                      TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.left,
                     )),
                 Padding(
                     padding: EdgeInsets.only(top: 40),
@@ -62,18 +56,13 @@ class edit_phonestate  extends State<edit_phone> {
                           // Handles Form Validation
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Please enter your phone number';
-                            } else if (isAlpha(value)) {
-                              return 'Only Numbers Please';
-                            } else if (value.length < 10) {
-                              return 'Please enter a VALID phone number';
+                              return 'Please enter your email.';
                             }
                             return null;
                           },
-                          controller: phoneController,
                           decoration: const InputDecoration(
-                            labelText: 'Your Phone Number',
-                          ),
+                              labelText: 'Your email address'),
+                          controller: emailController,
                         ))),
                 Padding(
                     padding: EdgeInsets.only(top: 150),
@@ -86,8 +75,9 @@ class edit_phonestate  extends State<edit_phone> {
                             onPressed: () {
                               // Validate returns true if the form is valid, or false otherwise.
                               if (_formKey.currentState!.validate() &&
-                                  isNumeric(phoneController.text)) {
-                                updateUserValue(phoneController.text);
+                                  EmailValidator.validate(
+                                      emailController.text)) {
+                                updateUserValue(emailController.text);
                                 Navigator.pop(context);
                               }
                             },
@@ -96,7 +86,9 @@ class edit_phonestate  extends State<edit_phone> {
                               style: TextStyle(fontSize: 15),
                             ),
                           ),
-                        )))
+                        )
+                    ))
+
               ]),
         ));
   }

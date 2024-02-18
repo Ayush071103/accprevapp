@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:accprevapp/loginpage.dart';
-import 'package:accprevapp/singuppage.dart';
+import 'package:accprevapp/User/loginpage.dart';
+import 'package:accprevapp/User/singuppage.dart';
 
 void main() {
   runApp(MaterialApp(
