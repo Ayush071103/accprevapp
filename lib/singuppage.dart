@@ -2,7 +2,18 @@ import 'package:accprevapp/loginpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class SignupPage extends StatelessWidget {
+class SignupPage extends StatefulWidget {
+  @override
+  State<SignupPage> createState() => _SignupPageState();
+}
+
+class _SignupPageState extends State<SignupPage> {
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController confirmpasswordController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,13 +58,16 @@ class SignupPage extends StatelessWidget {
 
                 ],
               ),
-              Column(
-                children: <Widget>[
-                  inputFile(label: "Username"),
-                  inputFile(label: "Email"),
-                  inputFile(label: "Password", obscureText: true),
-                  inputFile(label: "Confirm Password ", obscureText: true),
-                ],
+              Form(
+                key:_formKey ,
+                child: Column(
+                  children: <Widget>[
+                    inputFile(label: "Username",textFieldController: usernameController,errorMsg: "user"),
+                    inputFile(label: "Email",textFieldController: emailController,errorMsg: "user"),
+                    inputFile(label: "Password", obscureText: true,textFieldController: passwordController,errorMsg: "user"),
+                    inputFile(label: "Confirm Password ", obscureText: true, textFieldController: confirmpasswordController,errorMsg: "user"),
+                  ],
+                ),
               ),
               Container(
                 padding: EdgeInsets.only(top: 3, left: 3),
@@ -74,7 +88,12 @@ class SignupPage extends StatelessWidget {
                 child: MaterialButton(
                   minWidth: double.infinity,
                   height: 60,
-                  onPressed: () {},
+                  onPressed: () {
+                    final form = _formKey.currentState;
+                    if (form!.validate()) {
+
+                    }
+                  },
                   color: Color(0xff0095FF),
                   elevation: 0,
                   shape: RoundedRectangleBorder(
@@ -128,7 +147,7 @@ class SignupPage extends StatelessWidget {
 
 
 // we will be creating a widget for text field
-Widget inputFile({label, obscureText = false})
+Widget inputFile({label, obscureText = false ,TextEditingController? textFieldController,String? errorMsg})
 {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
@@ -145,8 +164,14 @@ Widget inputFile({label, obscureText = false})
       SizedBox(
         height: 5,
       ),
-      TextField(
+      TextFormField(
+        controller: textFieldController,
         obscureText: obscureText,
+        validator: (val) {
+          if (val!.isEmpty) {
+            return errorMsg;
+          }
+        },
         decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(vertical: 0,
                 horizontal: 10),
