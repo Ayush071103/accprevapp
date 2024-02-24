@@ -1,9 +1,14 @@
-import 'package:accprevapp/home_page/buy.dart';
-import 'package:accprevapp/home_page/message.dart';
+
+import 'package:accprevapp/Admin/Admin_homepage/Admin_homepage.dart';
+import 'package:accprevapp/Admin/Admin_homepage/Admin_message.dart';
+import 'package:accprevapp/Admin/Admin_homepage/Admin_profilepage.dart';
+import 'package:accprevapp/Admin/Admin_homepage/Admin_userrequest.dart';
+import 'package:accprevapp/User/home_page/buy.dart';
+import 'package:accprevapp/User/home_page/message.dart';
 import 'package:flutter/material.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
-import 'package:accprevapp/home_page/homepageinner.dart';
-import 'package:accprevapp/home_page/Profile_page/profilepage.dart';
+import 'package:accprevapp/User/home_page/homepageinner.dart';
+import 'package:accprevapp/User/home_page/Profile_page/profilepage.dart';
 
 class Homepage extends StatefulWidget{
   @override
@@ -16,7 +21,7 @@ class Homepage extends StatefulWidget{
 
 class homepagestate extends State<Homepage>{
   int selectedpage =0;
-  final _pageNo = [ProfilePage(), Buypage() , homepageinner() , Messagepage()];
+  final _pageNo = [Admin_profilepage(), Admin_userreqest() , Admin_homepage() , Admin_messagepage()];
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +31,7 @@ class homepagestate extends State<Homepage>{
       bottomNavigationBar: ConvexAppBar(
         items: [
           TabItem(icon: Icons.person, title: 'Profile'),
-          TabItem(icon: Icons.add_shopping_cart, title: 'Buy'),
+          TabItem(icon: Icons.request_page, title:'User request'),
           TabItem(icon: Icons.home, title: 'Home'),
           TabItem(icon: Icons.message, title: 'Message'),
         ],
@@ -41,5 +46,5 @@ class homepagestate extends State<Homepage>{
   }
 
 
-  }
+}
 
