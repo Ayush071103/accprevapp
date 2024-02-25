@@ -2,8 +2,23 @@ import 'package:accprevapp/User/home_page/home.dart';
 import 'package:accprevapp/User/singuppage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+
+  TextEditingController nameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  final formKey = new GlobalKey<FormState>();
+  var logindata;
+  var data;
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -137,7 +152,6 @@ class LoginPage extends StatelessWidget {
       ),
     );
   }
-
 }
 
 
