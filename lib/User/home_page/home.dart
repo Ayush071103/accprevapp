@@ -7,7 +7,7 @@ import 'package:accprevapp/User/home_page/Profile_page/profilepage.dart';
 
 class Homepage extends StatefulWidget{
   @override
-  State<StatefulWidget> createState() {
+  State<StatefulWidget> createState(){
     // TODO: implement createState
     return homepagestate();
   }
@@ -16,7 +16,7 @@ class Homepage extends StatefulWidget{
 
 class homepagestate extends State<Homepage>{
   int selectedpage =0;
-  final _pageNo = [ProfilePage(), Buypage() , homepageinner() , Messagepage()];
+  final _pageNo = [ProfilePage(), ProductPage() , homepageinner() , Messagepage()];
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +25,10 @@ class homepagestate extends State<Homepage>{
       body: _pageNo[selectedpage],
       bottomNavigationBar: ConvexAppBar(
         items: [
-          TabItem(icon: Icons.person, title: 'Profile'),
-          TabItem(icon: Icons.add_shopping_cart, title: 'Buy'),
           TabItem(icon: Icons.home, title: 'Home'),
-          TabItem(icon: Icons.message, title: 'Message'),
+          TabItem(icon: Icons.add_shopping_cart, title: 'Buy'),
+          TabItem(icon: Icons.person, title: 'Profile'),
+
         ],
         initialActiveIndex: selectedpage,
         onTap: (int index){

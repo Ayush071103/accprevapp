@@ -84,7 +84,7 @@ class homepageinnerstate extends State<homepageinner>{
                   mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      //Image.network(src)
+                      Lottie.asset('assets/flame.json',height: 100, width: 100,),//Image.network(src)
                       SizedBox(
                         height: 8,
                       ),
@@ -123,7 +123,7 @@ class homepageinnerstate extends State<homepageinner>{
                   mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      //Image.network(src)
+                      Lottie.asset('assets/flame.json',height: 100, width: 100,),//Image.network(src)
                       SizedBox(
                         height: 8,
                       ),
@@ -140,47 +140,48 @@ class homepageinnerstate extends State<homepageinner>{
 
               ),
             ),),),
-          GestureDetector(
-            onTap:  () {
-              Navigator.push(context,
-                MaterialPageRoute(builder: (context) => Temperature_sensor()),);},child:
-          Container(
-            width: double.infinity,
-            child:const Card(
-              elevation: 10.0,
-              shadowColor: Colors.green,
-              margin: EdgeInsets.all(10.0),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10.0),
-                    topRight: Radius.circular(10.0),
-                    bottomLeft: Radius.circular(10.0),
-                    bottomRight: Radius.circular(10.0),
-                  )),
-              child: Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      //Image.network(src)
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Text(
-                       'Temperature	Sensor',
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                      ),
-                      SizedBox(
-                        height: 8,
-                      ),
+    GestureDetector(
+    onTap:  () {
+    Navigator.push(context,
+    MaterialPageRoute(builder: (context) => temperature_sensor()),);},child:
+    Container(
+    width: double.infinity,
+    child:Card(
+    elevation: 10.0,
+    shadowColor: Colors.green,
+    margin: EdgeInsets.all(10.0),
+    shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.only(
+    topLeft: Radius.circular(10.0),
+    topRight: Radius.circular(10.0),
+    bottomLeft: Radius.circular(10.0),
+    bottomRight: Radius.circular(10.0),
+    )),
+    child: Padding(
+    padding: EdgeInsets.all(16.0),
+    child: Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+    Lottie.asset('assets/flame.json',height: 100, width: 100,),//Image.network(src)
+    SizedBox(
+    height: 8,
+    ),
+    Text(
+    'Smoke Sensor',
+    style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),
+    ),
+    SizedBox(
+    height: 8,
+    ),
 
 
-              ]),
-            ),),),
+    ]),
 
-          )],
-      ),
+    ),
+    ),),),
+
+  ]),
     );
   }
 

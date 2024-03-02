@@ -1,3 +1,7 @@
+import 'dart:convert';
+
+import 'package:accprevapp/Admin/Admin_homepage/Admin_profilepage.dart';
+import 'package:accprevapp/User/home_page/Profile_page/profilepage.dart';
 import 'package:accprevapp/User/home_page/home.dart';
 import 'package:accprevapp/User/singuppage.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +23,7 @@ class _LoginPageState extends State<LoginPage> {
   var logindata;
   var data;
   bool isLoading = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +43,9 @@ class _LoginPageState extends State<LoginPage> {
 
         ), systemOverlayStyle: SystemUiOverlayStyle.light,
       ),
-      body: Container(
+
+
+      body:  isLoading ? Center(child: CircularProgressIndicator(color: Colors.blue)) : SingleChildScrollView(child:Container(
         height: MediaQuery.of(context).size.height,
         width: double.infinity,
         child: Column(
@@ -58,13 +65,16 @@ class _LoginPageState extends State<LoginPage> {
                           color:Colors.grey[700]),)
                   ],
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 40),
-                  child: Column(
-                    children: <Widget>[
-                      inputFile(label: "Email"),
-                      inputFile(label: "Password", obscureText: true)
-                    ],
+                Form(
+                  key: formKey,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 40),
+                    child: Column(
+                      children: <Widget>[
+                        inputFile(label: "Email", textFieldController: nameController,errorMsg: "Enter your email" ),
+                        inputFile(label: "Password", obscureText: true,textFieldController: passwordController,errorMsg: "Enter your password")
+                      ],
+                    ),
                   ),
                 ),
                 Padding(padding:
@@ -81,36 +91,21 @@ class _LoginPageState extends State<LoginPage> {
                           right: BorderSide(color: Colors.black),
 
                         )
-
-
-
                     ),
                     child: MaterialButton(
                       minWidth: double.infinity,
                       height: 60,
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) =>
-                                Homepage(),
-                          ),
-                        );
-                      },
+                      onPressed:_submit,
                       color: Color(0xff0095FF),
                       elevation: 0,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(45),
-
                       ),
-                      child: GestureDetector(child:
-                      Text(" Login", style:TextStyle(
+                      child: Text(" Login", style:TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 18
                       ),
-                      ),onTap: () {
-                        Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => LoginPage()),);},)
+                      )
 
                     ),
                   ),
@@ -149,14 +144,56 @@ class _LoginPageState extends State<LoginPage> {
             ))
           ],
         ),
-      ),
+      ),)
     );
   }
+
+  Future<void> _submit() async {
+    final form = formKey.currentState;
+    if (form!.validate()) {
+      setState(() {
+        isLoading = true;
+      });
+      final login_url = Uri.parse(
+          "https://accprevapp.000webhostapp.com/API/login.php");
+      final response = await http
+          .post(login_url, body: {
+        "l_email": nameController.text,
+        "l_pass": passwordController.text
+      });
+      if (response.statusCode == 200) {
+        logindata = jsonDecode(response.body);
+        data =
+        jsonDecode(response.body)['user'];
+        print(data);
+        setState(() {
+          isLoading = false;
+        });
+        if (logindata['error'] == false) {
+          SharedPreferences setpreference = await SharedPreferences.getInstance();
+          setpreference.setString('id', data['l_id'].toString());
+          setpreference.setString('name', data['l_name'].toString());
+          setpreference.setString('email', data['l_email'].toString());
+          //setpreference.setString('Role', data['Role'].toString());
+
+          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => Homepage()), (Route<dynamic> route) => false);
+        }else{
+          Fluttertoast.showToast(
+              msg: logindata['message'].toString(),
+              toastLength: Toast.LENGTH_LONG,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIosWeb: 2
+          );
+        }
+      }
+    }
+
+  }
+
 }
 
-
 // we will be creating a widget for text field
-Widget inputFile({label, obscureText = false})
+Widget inputFile({label, obscureText = false ,TextEditingController? textFieldController,String? errorMsg})
 {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
@@ -173,14 +210,20 @@ Widget inputFile({label, obscureText = false})
       SizedBox(
         height: 5,
       ),
-      TextField(
+      TextFormField(
+        controller: textFieldController,
         obscureText: obscureText,
+        validator: (val) {
+          if (val!.isEmpty) {
+            return errorMsg;
+          }
+        },
         decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(vertical: 0,
                 horizontal: 10),
             enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(
-                  color: Colors.grey,
+                  color: Colors.grey
               ),
 
             ),
@@ -192,4 +235,6 @@ Widget inputFile({label, obscureText = false})
       SizedBox(height: 10,)
     ],
   );
+
+
 }
