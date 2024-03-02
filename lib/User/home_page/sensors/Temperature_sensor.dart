@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class Temperature_sensor extends StatefulWidget {
+class temperature_sensor extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return Temperature_sensorstate();
+    return temperature_sensorstate();
   }
 
 }
 
-class Temperature_sensorstate extends State<Temperature_sensor> {
+class temperature_sensorstate extends State<temperature_sensor> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
