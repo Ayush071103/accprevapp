@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:accprevapp/User/home_page/Profile_page/profilepage.dart';
+import 'package:accprevapp/User/home_page/Profile_page/edit_profilepage.dart';
 import 'package:string_validator/string_validator.dart';
 import 'package:accprevapp/User/home_page/Profile_page/user_data.dart';
 

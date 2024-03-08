@@ -66,7 +66,7 @@ class _SignupPageState extends State<SignupPage> {
 
                 ],
               ),
-              Form(
+                Form(
                 key:_formKey ,
                 child: Column(
                   children: <Widget>[

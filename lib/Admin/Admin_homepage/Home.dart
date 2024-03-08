@@ -3,23 +3,21 @@ import 'package:accprevapp/Admin/Admin_homepage/Admin_homepage.dart';
 import 'package:accprevapp/Admin/Admin_homepage/Admin_message.dart';
 import 'package:accprevapp/Admin/Admin_homepage/Admin_profilepage.dart';
 import 'package:accprevapp/Admin/Admin_homepage/Admin_userrequest.dart';
-import 'package:accprevapp/User/home_page/buy.dart';
-import 'package:accprevapp/User/home_page/message.dart';
-import 'package:flutter/material.dart';
-import 'package:convex_bottom_bar/convex_bottom_bar.dart';
-import 'package:accprevapp/User/home_page/homepageinner.dart';
-import 'package:accprevapp/User/home_page/Profile_page/profilepage.dart';
 
-class Homepage extends StatefulWidget{
+
+import 'package:flutter/material.dart';
+
+
+class admin_Homepage extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return homepagestate();
+    return admin_homepagestate();
   }
 
 }
 
-class homepagestate extends State<Homepage>{
+class admin_homepagestate extends State<admin_Homepage>{
   int selectedpage =0;
   final _pageNo = [Admin_profilepage(), Admin_userreqest() , Admin_homepage() , Admin_messagepage()];
 
@@ -28,21 +26,34 @@ class homepagestate extends State<Homepage>{
     return Scaffold(
 
       body: _pageNo[selectedpage],
-      bottomNavigationBar: ConvexAppBar(
-        items: [
-          TabItem(icon: Icons.person, title: 'Profile'),
-          TabItem(icon: Icons.request_page, title:'User request'),
-          TabItem(icon: Icons.home, title: 'Home'),
-          TabItem(icon: Icons.message, title: 'Message'),
-        ],
-        initialActiveIndex: selectedpage,
-        onTap: (int index){
-          setState(() {
-            selectedpage = index;
-          });
-        },
-      ),
-    );
+      drawer: Drawer(
+
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children:[
+          DrawerHeader(
+          decoration: BoxDecoration(
+            color: Colors.blue,
+          ),
+          child: Text(
+            ' Admin Page',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 24,
+            ),
+          ),
+        ),
+        ListTile(
+          title: Text('Item 1'),
+          onTap: () {
+            // Update UI based on item 1
+            Navigator.pop(context); // Close the drawer
+          },
+        ),
+
+    ])
+
+    ));
   }
 
 

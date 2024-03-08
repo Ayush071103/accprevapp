@@ -1,7 +1,8 @@
 import 'dart:convert';
 
 import 'package:accprevapp/Admin/Admin_homepage/Admin_profilepage.dart';
-import 'package:accprevapp/User/home_page/Profile_page/profilepage.dart';
+import 'package:accprevapp/Admin/Admin_homepage/Home.dart';
+import 'package:accprevapp/User/home_page/Profile_page/edit_profilepage.dart';
 import 'package:accprevapp/User/home_page/home.dart';
 import 'package:accprevapp/User/singuppage.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +44,6 @@ class _LoginPageState extends State<LoginPage> {
 
         ), systemOverlayStyle: SystemUiOverlayStyle.light,
       ),
-
 
       body:  isLoading ? Center(child: CircularProgressIndicator(color: Colors.blue)) : SingleChildScrollView(child:Container(
         height: MediaQuery.of(context).size.height,

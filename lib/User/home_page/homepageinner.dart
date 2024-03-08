@@ -20,23 +20,25 @@ class homepageinnerstate extends State<homepageinner>{
     return Scaffold(
       appBar: AppBar(title: Text("Home Page"),),
       body: Column(
-        children: [GestureDetector(
+        children: [
+          GestureDetector(
           onTap:  () {
-    Navigator.push(context,
-    MaterialPageRoute(builder: (context) => flamesensor()),);},
+          Navigator.push(context,
+          MaterialPageRoute(builder: (context) => flamesensor()),
+          );},
           child:
           Container(
             width: double.infinity,
             child: Card(
-              elevation: 10.0,
+              elevation: 9.0,
               shadowColor: Colors.green,
               margin: EdgeInsets.all(10.0),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10.0),
-                    topRight: Radius.circular(10.0),
-                    bottomLeft: Radius.circular(10.0),
-                    bottomRight: Radius.circular(10.0),
+                    topLeft: Radius.circular(9.0),
+                    topRight: Radius.circular(9.0),
+                    bottomLeft: Radius.circular(9.0),
+                    bottomRight: Radius.circular(9.0),
                   )),
               child: Padding(
                 padding: EdgeInsets.all(16.0),
@@ -56,11 +58,13 @@ class homepageinnerstate extends State<homepageinner>{
                         height: 8,
                       ),
 
-                    ]),
+                    ]
+                ),
 
               ),
             ),
-          ),),GestureDetector(
+          ),)
+          ,GestureDetector(
           onTap:  () {
             Navigator.push(context,
               MaterialPageRoute(builder: (context) => mq4gas_sensor()),);},
@@ -70,13 +74,13 @@ class homepageinnerstate extends State<homepageinner>{
             child:Card(
               elevation: 10.0,
               shadowColor: Colors.green,
-              margin: EdgeInsets.all(10.0),
+              margin: EdgeInsets.all(9.0),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10.0),
-                    topRight: Radius.circular(10.0),
-                    bottomLeft: Radius.circular(10.0),
-                    bottomRight: Radius.circular(10.0),
+                    topLeft: Radius.circular(9.0),
+                    topRight: Radius.circular(9.0),
+                    bottomLeft: Radius.circular(9.0),
+                    bottomRight: Radius.circular(9.0),
                   )),
               child: Padding(
                 padding: EdgeInsets.all(16.0),
@@ -99,23 +103,25 @@ class homepageinnerstate extends State<homepageinner>{
                     ]),
 
               ),
-            ),),),
+            ),),
+        ),
           GestureDetector(
             onTap:  () {
               Navigator.push(context,
-                MaterialPageRoute(builder: (context) => smoke_sensor()),);},child:
+                MaterialPageRoute(builder: (context) => smoke_sensor()),);},
+            child:
           Container(
             width: double.infinity,
             child:Card(
               elevation: 10.0,
               shadowColor: Colors.green,
-              margin: EdgeInsets.all(10.0),
+              margin: EdgeInsets.all(9.0),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10.0),
-                    topRight: Radius.circular(10.0),
-                    bottomLeft: Radius.circular(10.0),
-                    bottomRight: Radius.circular(10.0),
+                    topLeft: Radius.circular(9.0),
+                    topRight: Radius.circular(9.0),
+                    bottomLeft: Radius.circular(9.0),
+                    bottomRight: Radius.circular(9.0),
                   )),
               child: Padding(
                 padding: EdgeInsets.all(16.0),
@@ -147,15 +153,15 @@ class homepageinnerstate extends State<homepageinner>{
     Container(
     width: double.infinity,
     child:Card(
-    elevation: 10.0,
+    elevation: 9.0,
     shadowColor: Colors.green,
-    margin: EdgeInsets.all(10.0),
+    margin: EdgeInsets.all(9.0),
     shape: RoundedRectangleBorder(
     borderRadius: BorderRadius.only(
-    topLeft: Radius.circular(10.0),
-    topRight: Radius.circular(10.0),
-    bottomLeft: Radius.circular(10.0),
-    bottomRight: Radius.circular(10.0),
+    topLeft: Radius.circular(9.0),
+    topRight: Radius.circular(9.0),
+    bottomLeft: Radius.circular(9.0),
+    bottomRight: Radius.circular(9.0),
     )),
     child: Padding(
     padding: EdgeInsets.all(16.0),

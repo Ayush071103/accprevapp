@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:accprevapp/User/onboarding.dart';
 import 'package:accprevapp/User/splashscreen.dart';
+import 'package:provider/provider.dart';
 
 void main() => runApp(MyApp());
 

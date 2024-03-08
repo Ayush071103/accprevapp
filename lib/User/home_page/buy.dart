@@ -1,15 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-
-
-
-
-class ProductPage extends StatefulWidget {
-  @override
-  State<ProductPage> createState() => _ProductPageState();
+void main() {
+  runApp(MyApp());
 }
 
-class _ProductPageState extends State<ProductPage> {
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Book Device',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: ChangeNotifierProvider(
+        create: (_) => Cart(),
+        child: ProductPage(),
+      ),
+    );
+  }
+}
+
+class ProductPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,51 +56,60 @@ class _ProductPageState extends State<ProductPage> {
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(height: 20),
-           // Consumer<Cart>(
-           //    builder: (context, cart, _) {
-           //      return Row(
-           //        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-           //        children: [
-           //          Text(
-           //            '\₹${cart.getItemTotal('Car Device').toStringAsFixed(2)}', // Total price for 'Car Device'
-           //            style: TextStyle(
-           //              fontSize: 20,
-           //              fontWeight: FontWeight.bold,
-           //            ),
-           //          ),
-           //          Row(
-           //            children: [
-           //              IconButton(
-           //                onPressed: () {
-           //                  cart.removeFromCart(
-           //                      'Car Device'); // Decrease item count
-           //                },
-           //                icon: Icon(Icons.remove),
-           //              ),
-           //              Text(
-           //                '${cart.getItemCount('Car Device')}',
-           //                style: TextStyle(
-           //                  fontSize: 20,
-           //                  fontWeight: FontWeight.bold,
-           //                ),
-           //              ),
-           //              IconButton(
-           //                onPressed: () {
-           //                  cart.addToCart('Car Device'); // Increase item count
-           //                },
-           //                icon: Icon(Icons.add),
-           //              ),
-           //            ],
-           //          ),
-           //        ],
-           //      );
-           //    },
-           //  ),
+            Consumer<Cart>(
+              builder: (context, cart, _) {
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      '\₹${cart.getItemTotal('Car Device').toStringAsFixed(2)}', // Total price for 'Car Device'
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            cart.removeFromCart(
+                                'Car Device'); // Decrease item count
+                          },
+                          icon: Icon(Icons.remove),
+                        ),
+                        Text(
+                          '${cart.getItemCount('Car Device')}',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            cart.addToCart('Car Device'); // Increase item count
+                          },
+                          icon: Icon(Icons.add),
+                        ),
+                      ],
+                    ),
+                  ],
+                );
+              },
+            ),
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 // Handle checkout
               },
+              style: ElevatedButton.styleFrom(
+                primary: Colors.blue,
+                onPrimary: Colors.white,
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                textStyle: TextStyle(fontSize: 18),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+              ),
               child: Text('Buy Now'),
             ),
           ],
