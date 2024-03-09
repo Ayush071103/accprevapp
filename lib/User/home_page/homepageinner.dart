@@ -36,174 +36,98 @@ class homepageinnerstate extends State<homepageinner>{
       ),
       body: SingleChildScrollView(
         child: Column(
-            children: [
-              GestureDetector(
-                onTap:  () {
-                  Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => FlamePage()),
-                  );},
-                child:
-                Container(
-                  width: double.infinity,
-                  child: Card(
-                    elevation: 9.0,
-                    shadowColor: Colors.green,
-                    margin: EdgeInsets.all(10.0),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(9.0),
-                          topRight: Radius.circular(9.0),
-                          bottomLeft: Radius.circular(9.0),
-                          bottomRight: Radius.circular(9.0),
-                        )),
-                    child: Padding(
-                      padding: EdgeInsets.all(16.0),
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Lottie.asset('assets/flame.json',height: 100, width: 100,),
-                            SizedBox(
-                              height: 8,
-                            ),
-                            Text(
-                              'Flame Sensor',
-                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                            ),
-                            SizedBox(
-                              height: 8,
-                            ),
-
-                          ]
-                      ),
-
-                    ),
-                  ),
-                ),)
-              ,GestureDetector(
-                onTap:  () {
-                  Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => MQ4Page()),);},
-                child:
-                Container(
-                  width: double.infinity,
-                  child:Card(
-                    elevation: 10.0,
-                    shadowColor: Colors.green,
-                    margin: EdgeInsets.all(9.0),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(9.0),
-                          topRight: Radius.circular(9.0),
-                          bottomLeft: Radius.circular(9.0),
-                          bottomRight: Radius.circular(9.0),
-                        )),
-                    child: Padding(
-                      padding: EdgeInsets.all(16.0),
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Lottie.asset('assets/flame.json',height: 100, width: 100,),//Image.network(src)
-                            SizedBox(
-                              height: 8,
-                            ),
-                            Text(
-                              '	MQ4GAS Sensor',
-                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                            ),
-                            SizedBox(
-                              height: 8,
-                            ),
-
-                          ]),
-
-                    ),
-                  ),),
+          children: [
+            Card(
+              color: Color(0xff08364B),
+              margin: EdgeInsets.only(left: 50,top: 16,bottom: 16),
+              shape: RoundedRectangleBorder(
+                  borderRadius:  BorderRadius.only(
+                    topLeft: Radius.circular(25.0),
+                    bottomLeft: Radius.circular(25.0),)
               ),
-              GestureDetector(
-                onTap:  () {
-                  Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SmokePage()),);},
-                child:
-                Container(
-                  width: double.infinity,
-                  child:Card(
-                    elevation: 10.0,
-                    shadowColor: Colors.green,
-                    margin: EdgeInsets.all(9.0),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(9.0),
-                          topRight: Radius.circular(9.0),
-                          bottomLeft: Radius.circular(9.0),
-                          bottomRight: Radius.circular(9.0),
-                        )),
-                    child: Padding(
-                      padding: EdgeInsets.all(16.0),
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Lottie.asset('assets/flame.json',height: 100, width: 100,),//Image.network(src)
-                            SizedBox(
-                              height: 8,
-                            ),
-                            Text(
-                              'Smoke Sensor',
-                              style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),
-                            ),
-                            SizedBox(
-                              height: 8,
-                            ),
-
-
-                          ]),
-
-                    ),
-                  ),),),
-              GestureDetector(
-                onTap:  () {
-                  Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => TempraturePage()),);},child:
-              Container(
-                width: double.infinity,
-                child:Card(
-                  elevation: 9.0,
-                  shadowColor: Colors.green,
-                  margin: EdgeInsets.all(9.0),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(9.0),
-                        topRight: Radius.circular(9.0),
-                        bottomLeft: Radius.circular(9.0),
-                        bottomRight: Radius.circular(9.0),
-                      )),
-                  child: Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Lottie.asset('assets/flame.json',height: 100, width: 100,),//Image.network(src)
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            'Temprature Sensor',
-                            style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-
-
-                        ]),
-
-                  ),
-                ),),),
-              SizedBox(height: 42,),
-            ]),
+              elevation: 8,
+              child:InkWell(
+                onTap: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SmokePage()),
+                  );
+                },
+                child: Container(
+                    height: 200,
+                    alignment: Alignment.center,
+                    child: Text("SMOKE SENSOR",style: TextStyle(color: Colors.white))),
+              ),
+            ),
+            Card(
+              color:Color(0xff08364B),
+              margin: EdgeInsets.only(right:50,top: 16,bottom: 16),
+              shape: RoundedRectangleBorder(
+                  borderRadius:  BorderRadius.only(
+                    topRight: Radius.circular(25.0),
+                    bottomRight: Radius.circular(25.0),)
+              ),
+              elevation: 8,
+              child:InkWell(
+                onTap: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => FlamePage()),
+                  );
+                },
+                child: Container(
+                    height: 200,
+                    alignment: Alignment.center,
+                    child: Text("FLAME SENSOR",style: TextStyle(color: Colors.white),)),
+              ),
+            ),
+            Card(
+              color:Color(0xff08364B),
+              margin: EdgeInsets.only(left: 50,top: 16,bottom: 16),
+              shape: RoundedRectangleBorder(
+                  borderRadius:  BorderRadius.only(
+                    topLeft: Radius.circular(25.0),
+                    bottomLeft: Radius.circular(25.0),)
+              ),
+              elevation: 8,
+              child:InkWell(
+                onTap: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => TempraturePage()),
+                  );
+                },
+                child: Container(
+                    height: 200,
+                    alignment: Alignment.center,
+                    child: Text("TEMPRATURE SENSOR",style: TextStyle(color: Colors.white))),
+              ),
+            ),
+            Card(
+              color:Color(0xff08364B),
+              margin: EdgeInsets.only(right:50,top: 16,bottom: 16),
+              shape: RoundedRectangleBorder(
+                  borderRadius:  BorderRadius.only(
+                    topRight: Radius.circular(25.0),
+                    bottomRight: Radius.circular(25.0),)
+              ),
+              elevation: 8,
+              child:InkWell(
+                onTap: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MQ4Page()),
+                  );
+                },
+                child: Container(
+                    height: 200,
+                    alignment: Alignment.center,
+                    child: Text("CNG GAS SENSOR",style: TextStyle(color: Colors.white))),
+              ),
+            ),
+            SizedBox(height: 42),
+          ],
+        ),
       ),
     );
   }

@@ -1,43 +1,162 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'package:accprevapp/User/home_page/Profile_page/profilepage.dart';
-class feedback_page extends StatefulWidget {
-  const feedback_page({super.key});
+import 'package:fluttertoast/fluttertoast.dart';
+
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
+
+class AddFeedbackPage extends StatefulWidget {
+  const AddFeedbackPage({Key? key}) : super(key: key);
 
   @override
-  State<feedback_page> createState() => _feedback_pageState();
+  State<AddFeedbackPage> createState() => _AddFeedbackPageState();
 }
 
-class _feedback_pageState extends State<feedback_page> {
+class _AddFeedbackPageState extends State<AddFeedbackPage> {
+  TextEditingController areaNameController = TextEditingController();
+  TextEditingController messageController = TextEditingController();
+  final formKey = new GlobalKey<FormState>();
+  var logindata;
+  var data;
+  bool isLoading = false;
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold( body:Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        SizedBox(
-            width: 320,
-            child: const Text(
-              "What's your Feedback",
-              style:
-              TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-              textAlign: TextAlign.left,
-            )),
-        Padding(padding: EdgeInsets.only(top: 40),
-            child:
-            SizedBox(
-              height: 100,width: 320,
-              child:TextField(decoration: InputDecoration(
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10)),
-                labelText: " add your feedback " ,
-
-              ),),)
-
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor ,
+        title: Text('Add Feedback'),
+        titleTextStyle: TextStyle(color: Colors.white,fontSize: 20),
+        shadowColor: Colors.white,
+        elevation: 10,
+        leading: IconButton(
+          icon: Container(
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(Radius.circular(20)),
+              color: Colors.white.withAlpha(20),
+            ),
+            child: Icon(Icons.arrow_back, color:Colors.white, size: 20),
+          ),
+          onPressed: () => Navigator.of(context).pop(),
         ),
-        Padding(padding:EdgeInsets.only(top: 150),
-          child: Align(alignment: Alignment.bottomCenter,
-            child: SizedBox(height: 50,width: 320,
-              child: ElevatedButton(onPressed: (){}, child: Text("Submit"),),),),),
-      ],));
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(30),
+          ),
+        ),
+        actions: <Widget>[
+          SizedBox(width: 20,),
+        ],
+      ),
+      body: isLoading ? Center(child: CircularProgressIndicator(color: Theme.of(context).primaryColor)) : SingleChildScrollView(
+        child: Form(
+          key: formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 20,),
+             Padding(padding: EdgeInsets.all(16),
+             child:  Text(
+               "What's your Feedback",
+               style:
+               TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+               textAlign: TextAlign.left,
+             ),),
+              Container(
+                padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
+                child: TextFormField(
+                  style: TextStyle(color: Color(0xFF08364B)),
+                  validator: (val) {
+                    if (val!.isEmpty) {
+                      return "Please enter message";
+                    }
+                  },
+                  controller: messageController,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Message',
+                    labelStyle:TextStyle(color: Color(0xFF08364B)),
+                    helperStyle: TextStyle(color: Color(0xFF08364B)),
+                    hintStyle: TextStyle(color: Color(0xFF08364B)),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(16.0),
+                      borderSide: BorderSide(
+                        color: Color(0xFF08364B),
+                      ),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(16.0),
+                      borderSide: BorderSide(
+                        color: Color(0xFF08364B),
+                        width: 2.0,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height:30 ,),
+              Container(
+                  height: 55,
+                  width: double.infinity,
+                  padding: EdgeInsets.only(left: 16,right: 16),
+                  margin: EdgeInsets.all(10),
+                  child: ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Theme.of(context).primaryColor),
+                      ),
+                      child: const Text('Send Feedback',
+                        style: TextStyle(color: Colors.white),),
+                      onPressed: _submit
+                  )),
+            ],
+          ),
+        ),
+      ) ,
+    );
   }
+
+  Future<void> _submit() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final form = formKey.currentState;
+    if (form!.validate()) {
+      setState(() {
+        isLoading = true;
+      });
+      final login_url = Uri.parse(
+          "https://accprevapp.000webhostapp.com/API/insert_feedback.php");
+      final response = await http
+          .post(login_url, body: {
+        "l_id": prefs.getString('id'),
+        "f_rating": "4.5",
+        "f_review": messageController.text,
+      });
+      if (response.statusCode == 200) {
+        logindata = jsonDecode(response.body);
+        print(data);
+        setState(() {
+          isLoading = false;
+        });
+        if (logindata['error'] == false) {
+          Fluttertoast.showToast(
+              msg: logindata['message'].toString(),
+              toastLength: Toast.LENGTH_LONG,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIosWeb: 2
+          );
+          Navigator.of(context).pop();
+        }else{
+          Fluttertoast.showToast(
+              msg: logindata['message'].toString(),
+              toastLength: Toast.LENGTH_LONG,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIosWeb: 2
+          );
+        }
+      }
+    }
+
+  }
+
 }

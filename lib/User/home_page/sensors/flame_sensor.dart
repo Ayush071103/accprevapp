@@ -68,7 +68,8 @@ class _FlamePageState extends State<FlamePage> {
           SizedBox(width: 20,),
         ],
       ),
-      body:isLoading ? Center(child: CircularProgressIndicator(color: Theme.of(context).primaryColor)) : ListView.builder(
+      body:isLoading ? Center(child: CircularProgressIndicator(color: Theme.of(context).primaryColor)) :
+      ListView.builder(
         itemCount: all_data == null ? 0 : all_data.length,
         padding: EdgeInsets.all(16),
         itemBuilder: (BuildContext context, int index) {

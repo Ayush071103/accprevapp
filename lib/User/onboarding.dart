@@ -82,6 +82,7 @@ class _onboardingState extends State<onboarding> {
             margin: EdgeInsets.all(40),
             width: double.infinity,
             child: FloatingActionButton(
+              backgroundColor: Color(0xFF032737),
               child: Text(
                   currentIndex == contents.length - 1 ? "Continue" : "Next"),
               onPressed: () {

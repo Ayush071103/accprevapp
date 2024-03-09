@@ -1,15 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:accprevapp/User/home_page/Profile_page/profilepage.dart';
-class aboutus_page extends StatefulWidget {
-  const aboutus_page({super.key});
 
+class About extends StatefulWidget {
   @override
-  State<aboutus_page> createState() => _aboutus_pageState();
+  State<StatefulWidget> createState() {
+    return _AboutState();
+  }
 }
 
-class _aboutus_pageState extends State<aboutus_page> {
+class _AboutState extends State<About> {
+  double _drawerIconSize = 24;
+  double _drawerFontSize = 17;
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Theme.of(context).primaryColor,
+          title: Text(
+            "About us",
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),
+          elevation: 0.5,
+          iconTheme: IconThemeData(color: Colors.white),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(30),
+            ),
+          ),
+
+        )
+    );
+
+
+
+
   }
 }

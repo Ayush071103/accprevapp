@@ -96,13 +96,14 @@ class _LoginPageState extends State<LoginPage> {
                       minWidth: double.infinity,
                       height: 60,
                       onPressed:_submit,
-                      color: Color(0xff0095FF),
+                      color: Color(0xFF032737),
                       elevation: 0,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(45),
                       ),
                       child: Text(" Login", style:TextStyle(
                           fontWeight: FontWeight.w600,
+                          color: Colors.white,
                           fontSize: 18
                       ),
                       )

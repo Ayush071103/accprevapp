@@ -1,4 +1,5 @@
 import 'package:accprevapp/User/home_page/Profile_page/aboutus_page.dart';
+import 'package:accprevapp/User/home_page/Profile_page/add_family_details.dart';
 import 'package:accprevapp/User/home_page/Profile_page/complaints_page.dart';
 import 'package:accprevapp/User/home_page/Profile_page/edit_profilepage.dart';
 import 'package:accprevapp/User/home_page/Profile_page/feedback_page.dart';
@@ -17,7 +18,22 @@ class _profilepageState extends State<profilepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("profile page"),),
+        appBar: AppBar(
+          backgroundColor: Theme.of(context).primaryColor ,
+          title: Text('Profile'),
+          centerTitle: true,
+          titleTextStyle: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold),
+          shadowColor: Colors.white,
+          elevation: 10,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(30),
+            ),
+          ),
+          actions: <Widget>[
+            SizedBox(width: 20,),
+          ],
+        ),
         body:SingleChildScrollView(
           child: Column(
             children: [
@@ -71,7 +87,7 @@ class _profilepageState extends State<profilepage> {
               GestureDetector(
                 onTap: (){
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) =>complaint_page() ));},
+                      MaterialPageRoute(builder: (context) =>AddComplaintsPage() ));},
                 child:Container(
                   width: 500,
                   height: 120,
@@ -105,7 +121,7 @@ class _profilepageState extends State<profilepage> {
               ),
               GestureDetector(
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder:(context)=> feedback_page()));},
+                  Navigator.push(context, MaterialPageRoute(builder:(context)=> AddFeedbackPage()));},
                 child: Container(
                   width: 500,
                   height: 120,
@@ -136,7 +152,7 @@ class _profilepageState extends State<profilepage> {
               ),
               GestureDetector(
                   onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> aboutus_page()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> About()));
                   },
                   child:  Container(
                     width: 500,
@@ -159,6 +175,38 @@ class _profilepageState extends State<profilepage> {
                           [
                             SizedBox(height: 6,),
                             Text("AboutUs",
+                              style: TextStyle(
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold),),
+                            SizedBox(height: 8,)],),
+
+                      ),),)
+              ),
+              GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> AddFamilyDetailPage()));
+                  },
+                  child:  Container(
+                    width: 500,
+                    height: 120,
+                    child: Card(elevation: 10.0,
+                      shadowColor: Colors.blueGrey,
+                      margin: EdgeInsets.all(15),
+                      shape: RoundedRectangleBorder(
+                        borderRadius:BorderRadius.only(
+                            topRight: Radius.circular(10),
+                            topLeft: Radius.circular(10),
+                            bottomRight:Radius.circular(10),
+                            bottomLeft: Radius.circular(10)),
+                      ),
+                      child: Padding(padding: EdgeInsets.all(16),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment:CrossAxisAlignment.center,
+                          children:
+                          [
+                            SizedBox(height: 6,),
+                            Text("Add Family Details",
                               style: TextStyle(
                                   fontSize: 30,
                                   fontWeight: FontWeight.bold),),

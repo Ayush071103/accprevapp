@@ -25,6 +25,7 @@ class homepagestate extends State<Homepage>{
 
       body: _pageNo[selectedpage],
       bottomNavigationBar: ConvexAppBar(
+        backgroundColor: Color(0xFF032737),
         items: [
           TabItem(icon: Icons.home, title: 'Home'),
           TabItem(icon: Icons.add_shopping_cart, title: 'Buy'),

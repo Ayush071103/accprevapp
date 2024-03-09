@@ -94,7 +94,7 @@ class WelcomePage extends StatelessWidget {
                       Navigator.push(context, MaterialPageRoute(builder: (context)=> SignupPage()));
 
                     },
-                    color: Color(0xff0095FF),
+                    color: Color(0xFF032737),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50)
                     ),
