@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'package:accprevapp/Admin/Admin_homepage/Admin_homepage.dart';
 import 'package:accprevapp/User/home_page/home.dart';
+import 'package:accprevapp/User/loginpage.dart';
 import 'package:accprevapp/User/onboarding.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -31,9 +33,21 @@ class _splashscreenstate extends State<splashscreen> with SingleTickerProviderSt
 
   Future checkFirstSeen() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    if(prefs.getString('id') != null) {
-      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => Homepage()), (Route<dynamic> route) => false);
-    }else{
+    bool _seen = (prefs.getBool('seen') ?? false);
+    if (_seen) {
+      if(prefs.getString('id') != null) {
+        if(prefs.getString('Role') != null && prefs.getString('Role') == "1"){
+          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => Admin_homepage()), (Route<dynamic> route) => false);
+        }else {
+          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => Homepage()), (Route<dynamic> route) => false);
+        }
+      }else{
+        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
+            builder: (BuildContext context) => LoginPage()), (
+            Route<dynamic> route) => false);
+      }
+    } else {
+      await prefs.setBool('seen', true);
       Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
           builder: (BuildContext context) => onboarding()), (
           Route<dynamic> route) => false);

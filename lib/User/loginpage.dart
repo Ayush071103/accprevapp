@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:accprevapp/Admin/Admin_homepage/Admin_homepage.dart';
 import 'package:accprevapp/Admin/Admin_homepage/Admin_profilepage.dart';
 import 'package:accprevapp/Admin/Admin_homepage/Home.dart';
 import 'package:accprevapp/User/home_page/Profile_page/edit_profilepage.dart';
@@ -175,9 +176,13 @@ class _LoginPageState extends State<LoginPage> {
           setpreference.setString('id', data['l_id'].toString());
           setpreference.setString('name', data['l_name'].toString());
           setpreference.setString('email', data['l_email'].toString());
-          //setpreference.setString('Role', data['Role'].toString());
+          setpreference.setString('Role', data['l_role'].toString());
+          if(setpreference.getString('Role') != null && setpreference.getString('Role') == "1"){
+            Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => Admin_homepage()), (Route<dynamic> route) => false);
+          }else {
+            Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => Homepage()), (Route<dynamic> route) => false);
+          }
 
-          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => Homepage()), (Route<dynamic> route) => false);
         }else{
           Fluttertoast.showToast(
               msg: logindata['message'].toString(),

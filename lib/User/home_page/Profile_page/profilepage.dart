@@ -3,6 +3,7 @@ import 'package:accprevapp/User/home_page/Profile_page/add_family_details.dart';
 import 'package:accprevapp/User/home_page/Profile_page/complaints_page.dart';
 import 'package:accprevapp/User/home_page/Profile_page/edit_profilepage.dart';
 import 'package:accprevapp/User/home_page/Profile_page/feedback_page.dart';
+import 'package:accprevapp/User/home_page/widgets/exit_confirmation_dialog.dart';
 import 'package:flutter/material.dart';
 
 class profilepage extends StatefulWidget {
@@ -31,6 +32,12 @@ class _profilepageState extends State<profilepage> {
             ),
           ),
           actions: <Widget>[
+            InkWell(
+              onTap: (){
+                showDialog(context: context, builder: (context) => ExitConfirmationDialog());
+              },
+              child: Icon(Icons.logout,color: Colors.white,),
+            ),
             SizedBox(width: 20,),
           ],
         ),
@@ -45,7 +52,7 @@ class _profilepageState extends State<profilepage> {
                   child: Card(
                     elevation: 10.0,
                     shadowColor: Colors.blueGrey,
-                    margin: EdgeInsets.all(15),
+                    margin: EdgeInsets.only(left: 16,right: 16,top: 32,bottom: 16),
                     shape: RoundedRectangleBorder(
                       borderRadius:BorderRadius.only(
                           topRight: Radius.circular(10),
@@ -58,22 +65,18 @@ class _profilepageState extends State<profilepage> {
                         crossAxisAlignment:CrossAxisAlignment.center,
                         children:
                         [
-                          SizedBox(height: 8,),
-                          Text(
-                            "Profile",
-                            style: TextStyle(
-                                fontSize: 30,
-                                fontWeight: FontWeight.bold),),
-                          SizedBox(height: 8,),
-                          ListTile(
-                            title: Text("name"),
-                            subtitle: Text(""),),
-                          ListTile(
-                            title: Text("Email"),
-                            subtitle: Text(""),),
-                          ListTile(
-                            title: Text("Phone"),
-                            subtitle: Text(""),),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Profile",
+                                style: TextStyle(
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.bold
+                                ),),
+                              Icon(Icons.arrow_forward_ios,color: Color(0xFF032737),)
+                            ],
+                          ),
                         ],
 
                       ),
@@ -89,11 +92,10 @@ class _profilepageState extends State<profilepage> {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) =>AddComplaintsPage() ));},
                 child:Container(
-                  width: 500,
-                  height: 120,
                   child: Card(elevation: 10.0,
                     shadowColor: Colors.blueGrey,
-                    margin: EdgeInsets.all(15),
+                    color: Color(0xFF032737),
+                    margin: EdgeInsets.only(left: 16,right: 16,top: 8,bottom: 16),
                     shape: RoundedRectangleBorder(
                       borderRadius:BorderRadius.only(
                           topRight: Radius.circular(10),
@@ -106,16 +108,21 @@ class _profilepageState extends State<profilepage> {
                         crossAxisAlignment:CrossAxisAlignment.center,
                         children:
                         [
-                          SizedBox(height: 6,),
-                          Text(
-                            "Complaints",
-                            style: TextStyle(
-                                fontSize: 30,
-                                fontWeight: FontWeight.bold
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Complaints",
+                                style: TextStyle(
+                                    fontSize: 24,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold
+                                ),),
+                              Icon(Icons.arrow_forward_ios,color: Colors.white,)
+                            ],
+                          ),
 
-                            ),),
-
-                          SizedBox(height: 8,)],),
+                         ],),
 
                     ),),),
               ),
@@ -123,12 +130,10 @@ class _profilepageState extends State<profilepage> {
                 onTap: (){
                   Navigator.push(context, MaterialPageRoute(builder:(context)=> AddFeedbackPage()));},
                 child: Container(
-                  width: 500,
-                  height: 120,
                   child: Card(
                     elevation: 10.0,
                     shadowColor: Colors.blueGrey,
-                    margin: EdgeInsets.all(15),
+                    margin: EdgeInsets.only(left: 16,right: 16,top: 8,bottom: 16),
                     shape: RoundedRectangleBorder(
                       borderRadius:BorderRadius.only(
                           topRight: Radius.circular(10),
@@ -141,11 +146,19 @@ class _profilepageState extends State<profilepage> {
                         crossAxisAlignment:CrossAxisAlignment.center,
                         children:
                         [
-                          SizedBox(height: 8,),
-                          Text("Feedback",style: TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold),),
-                          SizedBox(height: 8,)],),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Feedback",
+                                style: TextStyle(
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.bold
+                                ),),
+                              Icon(Icons.arrow_forward_ios,color: Color(0xFF032737),)
+                            ],
+                          ),
+                         ],),
 
                     ),),
                 ),
@@ -155,11 +168,10 @@ class _profilepageState extends State<profilepage> {
                     Navigator.push(context, MaterialPageRoute(builder: (context)=> About()));
                   },
                   child:  Container(
-                    width: 500,
-                    height: 120,
                     child: Card(elevation: 10.0,
                       shadowColor: Colors.blueGrey,
-                      margin: EdgeInsets.all(15),
+                      color: Color(0xFF032737),
+                      margin: EdgeInsets.only(left: 16,right: 16,top: 8,bottom: 16),
                       shape: RoundedRectangleBorder(
                         borderRadius:BorderRadius.only(
                             topRight: Radius.circular(10),
@@ -173,12 +185,20 @@ class _profilepageState extends State<profilepage> {
                           crossAxisAlignment:CrossAxisAlignment.center,
                           children:
                           [
-                            SizedBox(height: 6,),
-                            Text("AboutUs",
-                              style: TextStyle(
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.bold),),
-                            SizedBox(height: 8,)],),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "About Us",
+                                  style: TextStyle(
+                                      fontSize: 24,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold
+                                  ),),
+                                Icon(Icons.arrow_forward_ios,color: Colors.white,)
+                              ],
+                            ),
+                         ],),
 
                       ),),)
               ),
@@ -187,11 +207,9 @@ class _profilepageState extends State<profilepage> {
                     Navigator.push(context, MaterialPageRoute(builder: (context)=> AddFamilyDetailPage()));
                   },
                   child:  Container(
-                    width: 500,
-                    height: 120,
                     child: Card(elevation: 10.0,
                       shadowColor: Colors.blueGrey,
-                      margin: EdgeInsets.all(15),
+                      margin: EdgeInsets.only(left: 16,right: 16,top: 8,bottom: 8),
                       shape: RoundedRectangleBorder(
                         borderRadius:BorderRadius.only(
                             topRight: Radius.circular(10),
@@ -205,12 +223,19 @@ class _profilepageState extends State<profilepage> {
                           crossAxisAlignment:CrossAxisAlignment.center,
                           children:
                           [
-                            SizedBox(height: 6,),
-                            Text("Add Family Details",
-                              style: TextStyle(
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.bold),),
-                            SizedBox(height: 8,)],),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Add Family Details",
+                                  style: TextStyle(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.bold
+                                  ),),
+                                Icon(Icons.arrow_forward_ios,color: Color(0xFF032737),)
+                              ],
+                            ),
+                         ],),
 
                       ),),)
               ),
