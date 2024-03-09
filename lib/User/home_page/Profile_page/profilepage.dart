@@ -18,130 +18,61 @@ class _profilepageState extends State<profilepage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text("profile page"),),
-        body:Column(
-          children: [
+        body:SingleChildScrollView(
+          child: Column(
+            children: [
+              GestureDetector(
+                onTap: (){
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) =>edit_ProfilePage() ));},
+                child: Container(
+                  child: Card(
+                    elevation: 10.0,
+                    shadowColor: Colors.blueGrey,
+                    margin: EdgeInsets.all(15),
+                    shape: RoundedRectangleBorder(
+                      borderRadius:BorderRadius.only(
+                          topRight: Radius.circular(10),
+                          topLeft: Radius.circular(10),
+                          bottomRight:Radius.circular(10),
+                          bottomLeft: Radius.circular(10)),),
+                    child: Padding(padding: EdgeInsets.all(16),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment:CrossAxisAlignment.center,
+                        children:
+                        [
+                          SizedBox(height: 8,),
+                          Text(
+                            "Profile",
+                            style: TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold),),
+                          SizedBox(height: 8,),
+                          ListTile(
+                            title: Text("name"),
+                            subtitle: Text(""),),
+                          ListTile(
+                            title: Text("Email"),
+                            subtitle: Text(""),),
+                          ListTile(
+                            title: Text("Phone"),
+                            subtitle: Text(""),),
+                        ],
 
-            GestureDetector(
-             onTap: (){
-             Navigator.push(context,
-             MaterialPageRoute(builder: (context) =>edit_ProfilePage() ));},
-              child: Container(
-                child: Card(
-                  elevation: 10.0,
-                  shadowColor: Colors.blueGrey,
-                  margin: EdgeInsets.all(15),
-                  shape: RoundedRectangleBorder(
-                    borderRadius:BorderRadius.only(
-                        topRight: Radius.circular(10),
-                        topLeft: Radius.circular(10),
-                        bottomRight:Radius.circular(10),
-                        bottomLeft: Radius.circular(10)),),
-                  child: Padding(padding: EdgeInsets.all(16),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment:CrossAxisAlignment.center,
-                      children:
-                      [
-                        SizedBox(height: 8,),
-                        Text(
-                          "Profile",
-                          style: TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold),),
-                        SizedBox(height: 8,),
-                        ListTile(
-                          title: Text("name"),
-                          subtitle: Text(""),),
-                        ListTile(
-                          title: Text("Email"),
-                          subtitle: Text(""),),
-                        ListTile(
-                          title: Text("Phone"),
-                          subtitle: Text(""),),
-                      ],
+                      ),
+
 
                     ),
 
-
                   ),
-
                 ),
               ),
-            ),
-
-
-        GestureDetector(
-        onTap: (){
-        Navigator.push(context,
-        MaterialPageRoute(builder: (context) =>complaint_page() ));},
-          child:Container(
-            width: 500,
-            height: 120,
-            child: Card(elevation: 10.0,
-              shadowColor: Colors.blueGrey,
-              margin: EdgeInsets.all(15),
-              shape: RoundedRectangleBorder(
-                borderRadius:BorderRadius.only(
-                    topRight: Radius.circular(10),
-                    topLeft: Radius.circular(10),
-                    bottomRight:Radius.circular(10),
-                    bottomLeft: Radius.circular(10)),),
-              child: Padding(padding: EdgeInsets.all(16),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment:CrossAxisAlignment.center,
-                  children:
-                  [
-                    SizedBox(height: 6,),
-                    Text(
-                      "Complaints",
-                      style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold
-
-                      ),),
-
-                    SizedBox(height: 8,)],),
-
-              ),),),
-        ),
-
-        GestureDetector(
-          onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder:(context)=> feedback_page()));},
-         child: Container(
-            width: 500,
-            height: 120,
-            child: Card(
-              elevation: 10.0,
-              shadowColor: Colors.blueGrey,
-              margin: EdgeInsets.all(15),
-              shape: RoundedRectangleBorder(
-                borderRadius:BorderRadius.only(
-                    topRight: Radius.circular(10),
-                    topLeft: Radius.circular(10),
-                    bottomRight:Radius.circular(10),
-                    bottomLeft: Radius.circular(10)),),
-              child: Padding(padding: EdgeInsets.all(16),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment:CrossAxisAlignment.center,
-                  children:
-                  [
-                    SizedBox(height: 8,),
-                    Text("Feedback",style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold),),
-                    SizedBox(height: 8,)],),
-
-              ),),
-          ),
-        ),
-            GestureDetector(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=> aboutus_page()));
-              },
-                child:  Container(
+              GestureDetector(
+                onTap: (){
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) =>complaint_page() ));},
+                child:Container(
                   width: 500,
                   height: 120,
                   child: Card(elevation: 10.0,
@@ -152,8 +83,7 @@ class _profilepageState extends State<profilepage> {
                           topRight: Radius.circular(10),
                           topLeft: Radius.circular(10),
                           bottomRight:Radius.circular(10),
-                          bottomLeft: Radius.circular(10)),
-                    ),
+                          bottomLeft: Radius.circular(10)),),
                     child: Padding(padding: EdgeInsets.all(16),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -161,17 +91,82 @@ class _profilepageState extends State<profilepage> {
                         children:
                         [
                           SizedBox(height: 6,),
-                          Text("AboutUs",
+                          Text(
+                            "Complaints",
                             style: TextStyle(
                                 fontSize: 30,
-                                fontWeight: FontWeight.bold),),
+                                fontWeight: FontWeight.bold
+
+                            ),),
+
                           SizedBox(height: 8,)],),
 
-                    ),),)
-            )
+                    ),),),
+              ),
+              GestureDetector(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder:(context)=> feedback_page()));},
+                child: Container(
+                  width: 500,
+                  height: 120,
+                  child: Card(
+                    elevation: 10.0,
+                    shadowColor: Colors.blueGrey,
+                    margin: EdgeInsets.all(15),
+                    shape: RoundedRectangleBorder(
+                      borderRadius:BorderRadius.only(
+                          topRight: Radius.circular(10),
+                          topLeft: Radius.circular(10),
+                          bottomRight:Radius.circular(10),
+                          bottomLeft: Radius.circular(10)),),
+                    child: Padding(padding: EdgeInsets.all(16),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment:CrossAxisAlignment.center,
+                        children:
+                        [
+                          SizedBox(height: 8,),
+                          Text("Feedback",style: TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold),),
+                          SizedBox(height: 8,)],),
 
+                    ),),
+                ),
+              ),
+              GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> aboutus_page()));
+                  },
+                  child:  Container(
+                    width: 500,
+                    height: 120,
+                    child: Card(elevation: 10.0,
+                      shadowColor: Colors.blueGrey,
+                      margin: EdgeInsets.all(15),
+                      shape: RoundedRectangleBorder(
+                        borderRadius:BorderRadius.only(
+                            topRight: Radius.circular(10),
+                            topLeft: Radius.circular(10),
+                            bottomRight:Radius.circular(10),
+                            bottomLeft: Radius.circular(10)),
+                      ),
+                      child: Padding(padding: EdgeInsets.all(16),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment:CrossAxisAlignment.center,
+                          children:
+                          [
+                            SizedBox(height: 6,),
+                            Text("AboutUs",
+                              style: TextStyle(
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold),),
+                            SizedBox(height: 8,)],),
 
-
-
-            ,],));}
+                      ),),)
+              ),
+              SizedBox(height: 42,),
+            ],),
+        ));}
 }

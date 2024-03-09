@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:accprevapp/User/home_page/home.dart';
 import 'package:accprevapp/User/onboarding.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -31,7 +32,7 @@ class _splashscreenstate extends State<splashscreen> with SingleTickerProviderSt
   Future checkFirstSeen() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     if(prefs.getString('id') != null) {
-      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => onboarding()), (Route<dynamic> route) => false);
+      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => Homepage()), (Route<dynamic> route) => false);
     }else{
       Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
           builder: (BuildContext context) => onboarding()), (
