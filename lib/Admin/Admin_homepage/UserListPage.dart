@@ -3,15 +3,15 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 
-class SmokePage extends StatefulWidget {
+class UserListPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return _SmokePageState();
+    return _UserListPageState();
   }
 }
 
-class _SmokePageState extends State<SmokePage> {
+class _UserListPageState extends State<UserListPage> {
   String? data;
   var all_data;
   bool isLoading = false;
@@ -44,7 +44,7 @@ class _SmokePageState extends State<SmokePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor ,
-        title: Text('Smoke value'),
+        title: Text('User List'),
         titleTextStyle: TextStyle(color: Colors.white,fontSize: 20),
         shadowColor: Colors.white,
         elevation: 10,

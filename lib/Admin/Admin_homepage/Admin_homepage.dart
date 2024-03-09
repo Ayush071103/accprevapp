@@ -1,3 +1,6 @@
+import 'package:accprevapp/Admin/Admin_homepage/ComplaintsListPage.dart';
+import 'package:accprevapp/Admin/Admin_homepage/FeedbackListPage.dart';
+import 'package:accprevapp/Admin/Admin_homepage/UserListPage.dart';
 import 'package:accprevapp/User/home_page/widgets/exit_confirmation_dialog.dart';
 import 'package:flutter/material.dart';
 class Admin_homepage extends StatefulWidget {
@@ -59,11 +62,26 @@ class _Admin_homepageState extends State<Admin_homepage> {
           decoration: BoxDecoration(color:  Color(0xFF032737)),
         ),
         ListTile(title:Text("ADMIN PAGE", style: TextStyle(fontSize: 20),)),
-        ListTile(title:Text("Manage Users"),leading: Icon(Icons.people),),
-        ListTile(title:Text("Manage Devices"), leading: Icon(Icons.device_hub),),
-        ListTile(title:Text("Complaints"), leading: Icon(Icons.mail),),
-        ListTile(title:Text("Feedback"), leading: Icon(Icons.feedback),),
-        ListTile(title:Text("Profile"), leading: Icon(Icons.person),),
+        ListTile(title:Text("Manage Users"),leading: Icon(Icons.people),
+        onTap: (){
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => UserListPage()));
+        },),
+        ListTile(title:Text("Manage Devices"), leading: Icon(Icons.device_hub),
+            onTap: (){
+            }),
+        ListTile(title:Text("Complaints"), leading: Icon(Icons.mail),
+            onTap: (){
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => ComplaintsListPage()));
+            }),
+        ListTile(title:Text("Feedback"), leading: Icon(Icons.feedback),
+            onTap: (){
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => FeedbackListPage()));
+            }),
+        ListTile(title:Text("Profile"), leading: Icon(Icons.person),
+            onTap: (){}),
         ListTile(title:Text("Logout"), leading: Icon(Icons.logout),onTap: (){
           showDialog(context: context, builder: (context) => ExitConfirmationDialog());
         },),
