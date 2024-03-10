@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 class UserListPage extends StatefulWidget {
@@ -15,6 +18,7 @@ class _UserListPageState extends State<UserListPage> {
   String? data;
   var all_data;
   bool isLoading = false;
+  var logindata;
 
   @override
   void initState() {
@@ -27,7 +31,7 @@ class _UserListPageState extends State<UserListPage> {
       isLoading = true;
     });
     http.Response response = await http.get(
-        Uri.parse("https://accprevapp.000webhostapp.com/API/fetch_smoke_sensor.php"));
+        Uri.parse("https://accprevapp.000webhostapp.com/API/A_fetch_user_list.php"));
 
     if (response.statusCode == 200) {
       data = response.body;
@@ -89,25 +93,81 @@ class _UserListPageState extends State<UserListPage> {
                   Padding(padding: EdgeInsets.only(left: 16,right: 16,top: 24,bottom: 8),
                     child: Row(
                       children: [
-                        Text("Reading Time: ", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
-                        Text(jsonDecode(data!)['data'][index]['timestamp'],
+                        Text("User Name: ", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
+                        Text(jsonDecode(data!)['data'][index]['l_name'],
                             style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal))
                       ],
                     ),
                   ),
-                  Padding(padding: EdgeInsets.only(left: 16,right: 16,top: 8,bottom: 24),
+                  Padding(padding: EdgeInsets.only(left: 16,right: 16,top: 8,bottom: 8),
                     child: Row(
                       children: [
-                        Text("Value: ", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
-                        Text(jsonDecode(data!)['data'][index]['smoke_value'],
+                        Text("Email: ", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
+                        Text(jsonDecode(data!)['data'][index]['l_email'],
                             style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal))
                       ],
                     ),
                   ),
+                  Padding(padding: EdgeInsets.only(left: 16,right: 16,top: 8,bottom: 8),
+                    child: Row(
+                      children: [
+                        Text("Phone No: ", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
+                        Text(jsonDecode(data!)['data'][index]['l_phone'],
+                            style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal))
+                      ],
+                    ),
+                  ),
+                 Align(
+                   alignment: Alignment.centerRight,
+                   child:  InkWell(
+                     onTap: (){
+                       _submit(jsonDecode(data!)['data'][index]['l_id'].toString());
+                     },
+                     child: Padding(padding: EdgeInsets.only(left: 16,right: 36,top: 8,bottom: 24),
+                       child: Text("Remove", style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold)),
+                     ),
+                   ),
+                 )
                 ],
               ));
         },
       ),
     );
   }
+
+     _submit(String id) async {
+       setState(() {
+         isLoading = true;
+       });
+      final login_url = Uri.parse(
+          "https://accprevapp.000webhostapp.com/API/A_delete.php");
+      final response = await http
+          .post(login_url, body: {
+        "l_id": id,
+      });
+      if (response.statusCode == 200) {
+        logindata = jsonDecode(response.body);
+        setState(() {
+          isLoading = false;
+        });
+        if (logindata['error'] == false) {
+          Fluttertoast.showToast(
+              msg: logindata['message'].toString(),
+              toastLength: Toast.LENGTH_LONG,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIosWeb: 2
+          );
+          getData();
+        }else{
+          Fluttertoast.showToast(
+              msg: logindata['message'].toString(),
+              toastLength: Toast.LENGTH_LONG,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIosWeb: 2
+          );
+        }
+    }
+
+  }
+
 }

@@ -27,7 +27,7 @@ class _FeedbackListPageState extends State<FeedbackListPage> {
       isLoading = true;
     });
     http.Response response = await http.get(
-        Uri.parse("https://accprevapp.000webhostapp.com/API/fetch_smoke_sensor.php"));
+        Uri.parse("https://accprevapp.000webhostapp.com/API/A_fetch_feedback.php"));
 
     if (response.statusCode == 200) {
       data = response.body;
@@ -89,8 +89,26 @@ class _FeedbackListPageState extends State<FeedbackListPage> {
                   Padding(padding: EdgeInsets.only(left: 16,right: 16,top: 24,bottom: 8),
                     child: Row(
                       children: [
-                        Text("Reading Time: ", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
-                        Text(jsonDecode(data!)['data'][index]['timestamp'],
+                        Text("User Name: ", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
+                        Text(jsonDecode(data!)['data'][index]['l_name'],
+                            style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal))
+                      ],
+                    ),
+                  ),
+                  Padding(padding: EdgeInsets.only(left: 16,right: 16,top: 8,bottom: 8),
+                    child: Row(
+                      children: [
+                        Text("Email: ", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
+                        Text(jsonDecode(data!)['data'][index]['l_email'],
+                            style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal))
+                      ],
+                    ),
+                  ),
+                  Padding(padding: EdgeInsets.only(left: 16,right: 16,top: 8,bottom: 8),
+                    child: Row(
+                      children: [
+                        Text("Phone No: ", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
+                        Text(jsonDecode(data!)['data'][index]['l_phone'],
                             style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal))
                       ],
                     ),
@@ -98,8 +116,8 @@ class _FeedbackListPageState extends State<FeedbackListPage> {
                   Padding(padding: EdgeInsets.only(left: 16,right: 16,top: 8,bottom: 24),
                     child: Row(
                       children: [
-                        Text("Value: ", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
-                        Text(jsonDecode(data!)['data'][index]['smoke_value'],
+                        Text("Review: ", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
+                        Text(jsonDecode(data!)['data'][index]['f_review'],
                             style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal))
                       ],
                     ),

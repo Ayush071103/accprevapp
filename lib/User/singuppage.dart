@@ -74,7 +74,7 @@ class _SignupPageState extends State<SignupPage> {
                     inputFile(label: "Email",textFieldController: emailController,errorMsg: "Please Enter Your Email"),
                     inputFile(label: "Password", obscureText: true,textFieldController: passwordController,errorMsg: "Please Enter Your Password"),
                     inputFile(label: "Confirm Password ", obscureText: true, textFieldController: confirmpasswordController,errorMsg: "Please Match the Password"),
-                    inputFile(label: "Phone Number",textFieldController: usernameController,errorMsg: "Please Enter Your Number"),
+                    inputFile(label: "Phone Number",textFieldController: phonenumberController,errorMsg: "Please Enter Your Number"),
                   ],
                 ),
               ),
@@ -158,10 +158,9 @@ class _SignupPageState extends State<SignupPage> {
       final response = await http
           .post(login_url, body: {
         "l_name": usernameController.text,
-        "l_phone": "845454545",
+        "l_phone": phonenumberController.text,
         "l_email": emailController.text,
         "l_pass": passwordController.text,
-        "l_role": "0",
         "l_status": "active",
 
       });
