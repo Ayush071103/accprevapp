@@ -135,17 +135,18 @@ class _UserListPageState extends State<UserListPage> {
     );
   }
 
-     _submit(String id) async {
+  _submit(String id) async {
        setState(() {
          isLoading = true;
        });
       final login_url = Uri.parse(
-          "https://accprevapp.000webhostapp.com/API/A_delete.php");
+          "https://accprevapp.000webhostapp.com/API/A_userlist_delete.php");
       final response = await http
           .post(login_url, body: {
         "l_id": id,
       });
       if (response.statusCode == 200) {
+        print(response.body);
         logindata = jsonDecode(response.body);
         setState(() {
           isLoading = false;
