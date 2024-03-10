@@ -17,7 +17,7 @@ class Homepage extends StatefulWidget{
 
 class homepagestate extends State<Homepage>{
   int selectedpage =0;
-  final _pageNo = [homepageinner(), ProductPage() ,  profilepage()  ];
+  final _pageNo = [homepageinner(), ProductPageStandalone() ,  profilepage()  ];
 
   @override
   Widget build(BuildContext context) {

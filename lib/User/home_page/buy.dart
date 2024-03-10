@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-void main() {
-  runApp(MyApp());
+
+
+class ProductPageStandalone extends StatefulWidget {
+  @override
+  _ProductPageStandaloneState createState() => _ProductPageStandaloneState();
 }
 
-class MyApp extends StatelessWidget {
+class _ProductPageStandaloneState extends State<ProductPageStandalone> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -30,14 +33,14 @@ class ProductPage extends StatelessWidget {
         title: Text('Book Device'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
               child: Center(
-                child: Image.network(
-                  'https://blog.airdroid.com/wp-content/uploads/2022/08/IoT-Devices.jpg',
+                child: Image.asset(
+                  'assets/IoT-Device.jpg',
                   height: 200,
                 ),
               ),
@@ -59,99 +62,64 @@ class ProductPage extends StatelessWidget {
             Consumer<Cart>(
               builder: (context, cart, _) {
                 return Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      '\₹${cart.getItemTotal('Car Device').toStringAsFixed(2)}', // Total price for 'Car Device'
+                      'Price: ',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Row(
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            cart.removeFromCart(
-                                'Car Device'); // Decrease item count
-                          },
-                          icon: Icon(Icons.remove),
-                        ),
-                        Text(
-                          '${cart.getItemCount('Car Device')}',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        IconButton(
-                          onPressed: () {
-                            cart.addToCart('Car Device'); // Increase item count
-                          },
-                          icon: Icon(Icons.add),
-                        ),
-                      ],
+                    Text(
+                      '\₹${cart.pricePerDeviceInRupees.toStringAsFixed(2)}', // Fixed price for 'Car Device'
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blue,
+                      ),
                     ),
                   ],
                 );
               },
             ),
             SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                // Handle checkout
-              },
-              style: ElevatedButton.styleFrom(
-                primary: Colors.blue,
-                onPrimary: Colors.white,
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                textStyle: TextStyle(fontSize: 18),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  _handleCheckout(context);
+                },
+                child: Text('Buy Now'),
               ),
-              child: Text('Buy Now'),
             ),
           ],
         ),
       ),
     );
   }
+
+  void _handleCheckout(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Confirmation"),
+          content: Text("Your purchase is complete."),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text("OK"),
+            ),
+          ],
+        );
+      },
+    );
+  }
 }
 
 class Cart with ChangeNotifier {
-  Map<String, int> _items = {};
-  final double pricePerDeviceInRupees = 1000; // Price per device in rupees
-
-  Map<String, int> get items => _items;
-
-  void addToCart(String productName) {
-    if (_items.containsKey(productName)) {
-      _items[productName] =
-          (_items[productName] ?? 0) + 1; // Increase count by 1
-    } else {
-      _items[productName] = 1; // Add the product with count 1
-    }
-    notifyListeners();
-  }
-
-  void removeFromCart(String productName) {
-    if (_items.containsKey(productName) && (_items[productName] ?? 0) > 0) {
-      _items[productName] =
-          (_items[productName] ?? 0) - 1; // Decrease count by 1
-      if (_items[productName] == 0) {
-        _items.remove(productName); // Remove the product if count becomes 0
-      }
-    }
-    notifyListeners();
-  }
-
-  int? getItemCount(String productName) {
-    return _items.containsKey(productName) ? _items[productName] : null;
-  }
-
-  double getItemTotal(String productName) {
-    final itemCount = _items[productName];
-    return itemCount != null ? itemCount * pricePerDeviceInRupees : 0;
-  }
+  final double pricePerDeviceInRupees =
+  1000; // Fixed price per device in rupees
 }
