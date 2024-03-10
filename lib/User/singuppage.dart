@@ -161,7 +161,7 @@ class _SignupPageState extends State<SignupPage> {
         "l_phone": "845454545",
         "l_email": emailController.text,
         "l_pass": passwordController.text,
-        "l_role": "1",
+        "l_role": "0",
         "l_status": "active",
 
       });

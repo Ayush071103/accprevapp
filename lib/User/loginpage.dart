@@ -1,8 +1,7 @@
 import 'dart:convert';
 
-import 'package:accprevapp/Admin/Admin_homepage/Admin_homepage.dart';
-import 'package:accprevapp/Admin/Admin_homepage/Admin_profilepage.dart';
-import 'package:accprevapp/Admin/Admin_homepage/Home.dart';
+
+
 import 'package:accprevapp/User/home_page/Profile_page/edit_profilepage.dart';
 import 'package:accprevapp/User/home_page/home.dart';
 import 'package:accprevapp/User/singuppage.dart';
@@ -97,14 +96,13 @@ class _LoginPageState extends State<LoginPage> {
                       minWidth: double.infinity,
                       height: 60,
                       onPressed:_submit,
-                      color: Color(0xFF032737),
+                      color: Color(0xff0095FF),
                       elevation: 0,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(45),
                       ),
                       child: Text(" Login", style:TextStyle(
                           fontWeight: FontWeight.w600,
-                          color: Colors.white,
                           fontSize: 18
                       ),
                       )
@@ -176,13 +174,9 @@ class _LoginPageState extends State<LoginPage> {
           setpreference.setString('id', data['l_id'].toString());
           setpreference.setString('name', data['l_name'].toString());
           setpreference.setString('email', data['l_email'].toString());
-          setpreference.setString('Role', data['l_role'].toString());
-          if(setpreference.getString('Role') != null && setpreference.getString('Role') == "1"){
-            Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => Admin_homepage()), (Route<dynamic> route) => false);
-          }else {
-            Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => Homepage()), (Route<dynamic> route) => false);
-          }
+          //setpreference.setString('Role', data['Role'].toString());
 
+          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => Homepage()), (Route<dynamic> route) => false);
         }else{
           Fluttertoast.showToast(
               msg: logindata['message'].toString(),
