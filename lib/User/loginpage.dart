@@ -1,9 +1,6 @@
 import 'dart:convert';
 
 import 'package:accprevapp/Admin/Admin_homepage/Admin_homepage.dart';
-import 'package:accprevapp/Admin/Admin_homepage/Admin_profilepage.dart';
-import 'package:accprevapp/Admin/Admin_homepage/Home.dart';
-import 'package:accprevapp/User/home_page/Profile_page/edit_profilepage.dart';
 import 'package:accprevapp/User/home_page/home.dart';
 import 'package:accprevapp/User/singuppage.dart';
 import 'package:flutter/material.dart';
