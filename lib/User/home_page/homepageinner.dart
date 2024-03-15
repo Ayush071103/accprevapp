@@ -56,7 +56,7 @@ class homepageinnerstate extends State<homepageinner>{
                 child: Container(
                     height: 200,
                     alignment: Alignment.center,
-                    child: Text("SMOKE SENSOR",style: TextStyle(color: Colors.white))),
+                    child: Text("SMOKE SENSOR",style: TextStyle(color: Colors.white, fontSize: 20))),
               ),
             ),
             Card(
@@ -78,7 +78,7 @@ class homepageinnerstate extends State<homepageinner>{
                 child: Container(
                     height: 200,
                     alignment: Alignment.center,
-                    child: Text("FLAME SENSOR",style: TextStyle(color: Colors.white),)),
+                    child: Text("FLAME SENSOR",style: TextStyle(color: Colors.white, fontSize: 20),)),
               ),
             ),
             Card(
@@ -100,7 +100,7 @@ class homepageinnerstate extends State<homepageinner>{
                 child: Container(
                     height: 200,
                     alignment: Alignment.center,
-                    child: Text("TEMPRATURE SENSOR",style: TextStyle(color: Colors.white))),
+                    child: Text("TEMPRATURE SENSOR",style: TextStyle(color: Colors.white, fontSize: 20))),
               ),
             ),
             Card(
@@ -122,7 +122,7 @@ class homepageinnerstate extends State<homepageinner>{
                 child: Container(
                     height: 200,
                     alignment: Alignment.center,
-                    child: Text("CNG GAS SENSOR",style: TextStyle(color: Colors.white))),
+                    child: Text("CNG GAS SENSOR",style: TextStyle(color: Colors.white, fontSize: 20))),
               ),
             ),
             SizedBox(height: 42),

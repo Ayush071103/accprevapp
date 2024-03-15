@@ -1,3 +1,4 @@
+import 'package:accprevapp/User/home_page/payment.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -99,8 +100,11 @@ class ProductPage extends StatelessWidget {
             Center(
               child: ElevatedButton(
                 onPressed: () {
-                  _handleCheckout(context);
-                },
+    Navigator.push(context,
+    MaterialPageRoute(builder: (context) => payment()),
+    )
+    ;},
+
                 child: Text('Buy Now'),
                 style: ElevatedButton.styleFrom(
                   elevation: 5,

@@ -68,7 +68,7 @@ class _Admin_homepageState extends State<Admin_homepage> {
                   child: Container(
                       height: 200,
                       alignment: Alignment.center,
-                      child: Text("User List",style: TextStyle(color: Colors.white))),
+                      child: Text("User List",style: TextStyle(color: Colors.white, fontSize: 20))),
                 ),
               ),
               Card(
@@ -90,7 +90,7 @@ class _Admin_homepageState extends State<Admin_homepage> {
                   child: Container(
                       height: 200,
                       alignment: Alignment.center,
-                      child: Text("Manage Devices",style: TextStyle(color: Colors.white),)),
+                      child: Text("Manage Devices",style: TextStyle(color: Colors.white,  fontSize: 20),)),
                 ),
               ),
               Card(
@@ -112,7 +112,7 @@ class _Admin_homepageState extends State<Admin_homepage> {
                   child: Container(
                       height: 200,
                       alignment: Alignment.center,
-                      child: Text("Complaints List",style: TextStyle(color: Colors.white))),
+                      child: Text("Complaints List",style: TextStyle(color: Colors.white,  fontSize: 20))),
                 ),
               ),
               Card(
@@ -134,7 +134,7 @@ class _Admin_homepageState extends State<Admin_homepage> {
                   child: Container(
                       height: 200,
                       alignment: Alignment.center,
-                      child: Text("Feedback List",style: TextStyle(color: Colors.white))),
+                      child: Text("Feedback List",style: TextStyle(color: Colors.white,  fontSize: 20))),
                 ),
               ),
             ],
@@ -144,7 +144,7 @@ class _Admin_homepageState extends State<Admin_homepage> {
             child: Column(children:[
               UserAccountsDrawerHeader(
                 accountName: Text("Admin"),
-                accountEmail: Text("admin@gmail.com"),
+                accountEmail: Text("admin7@gmail.com"),
                 currentAccountPicture: CircleAvatar(
                   backgroundColor: Colors.white,
                   child: Text(
