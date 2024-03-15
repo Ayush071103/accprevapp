@@ -14,9 +14,8 @@ class _ProductPageStandaloneState extends State<ProductPageStandalone> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Book Device',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+
+
       home: ChangeNotifierProvider(
         create: (_) => Cart(),
         child: ProductPage(),
@@ -30,7 +29,20 @@ class ProductPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color(0xFF032737) ,
         title: Text('Book Device'),
+        centerTitle: true,
+        titleTextStyle: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold),
+        shadowColor: Colors.white,
+        elevation: 10,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(30),
+          ),
+        ),
+        actions: <Widget>[
+          SizedBox(width: 20,),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -76,7 +88,7 @@ class ProductPage extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
-                        color: Colors.blue,
+                        color: Colors.grey,
                       ),
                     ),
                   ],
@@ -90,6 +102,10 @@ class ProductPage extends StatelessWidget {
                   _handleCheckout(context);
                 },
                 child: Text('Buy Now'),
+                style: ElevatedButton.styleFrom(
+                  elevation: 5,
+                  backgroundColor: Color(0xff08364B),
+                ),
               ),
             ),
           ],
