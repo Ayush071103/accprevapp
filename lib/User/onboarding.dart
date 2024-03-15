@@ -53,12 +53,12 @@ class _onboardingState extends State<onboarding> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 20),
+                      SizedBox(height:10),
                       Text(
                         contents[i].discription,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 16,
                           color: Colors.grey,
                         ),
                       )
@@ -82,6 +82,7 @@ class _onboardingState extends State<onboarding> {
             margin: EdgeInsets.all(40),
             width: double.infinity,
             child: FloatingActionButton(
+              backgroundColor: Color(0xFF032737),
               child: Text(
                   currentIndex == contents.length - 1 ? "Continue" : "Next"),
               onPressed: () {

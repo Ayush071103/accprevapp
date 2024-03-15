@@ -3,15 +3,15 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 
-class SmokePage extends StatefulWidget {
+class ComplaintsListPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return _SmokePageState();
+    return _ComplaintsListPageState();
   }
 }
 
-class _SmokePageState extends State<SmokePage> {
+class _ComplaintsListPageState extends State<ComplaintsListPage> {
   String? data;
   var all_data;
   bool isLoading = false;
@@ -27,7 +27,7 @@ class _SmokePageState extends State<SmokePage> {
       isLoading = true;
     });
     http.Response response = await http.get(
-        Uri.parse("https://accprevapp.000webhostapp.com/API/fetch_smoke_sensor.php"));
+        Uri.parse("https://accprevapp.000webhostapp.com/API/A_fetch_complaints.php"));
 
     if (response.statusCode == 200) {
       data = response.body;
@@ -44,7 +44,7 @@ class _SmokePageState extends State<SmokePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor ,
-        title: Text('Smoke value'),
+        title: Text('Complaints List'),
         titleTextStyle: TextStyle(color: Colors.white,fontSize: 20),
         shadowColor: Colors.white,
         elevation: 10,
@@ -89,8 +89,26 @@ class _SmokePageState extends State<SmokePage> {
                   Padding(padding: EdgeInsets.only(left: 16,right: 16,top: 24,bottom: 8),
                     child: Row(
                       children: [
-                        Text("Reading Time: ", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
-                        Text(jsonDecode(data!)['data'][index]['timestamp'],
+                        Text("User Name: ", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
+                        Text(jsonDecode(data!)['data'][index]['user_name'],
+                            style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal))
+                      ],
+                    ),
+                  ),
+                  Padding(padding: EdgeInsets.only(left: 16,right: 16,top: 8,bottom: 8),
+                    child: Row(
+                      children: [
+                        Text("Email: ", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
+                        Text(jsonDecode(data!)['data'][index]['email'],
+                            style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal))
+                      ],
+                    ),
+                  ),
+                  Padding(padding: EdgeInsets.only(left: 16,right: 16,top: 8,bottom: 8),
+                    child: Row(
+                      children: [
+                        Text("Phone No: ", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
+                        Text(jsonDecode(data!)['data'][index]['phone'],
                             style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal))
                       ],
                     ),
@@ -98,8 +116,8 @@ class _SmokePageState extends State<SmokePage> {
                   Padding(padding: EdgeInsets.only(left: 16,right: 16,top: 8,bottom: 24),
                     child: Row(
                       children: [
-                        Text("Value: ", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
-                        Text(jsonDecode(data!)['data'][index]['smoke_value'],
+                        Text("Message: ", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
+                        Text(jsonDecode(data!)['data'][index]['c_message'],
                             style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal))
                       ],
                     ),

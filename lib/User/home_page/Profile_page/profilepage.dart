@@ -1,119 +1,245 @@
-import 'dart:async';
-
-import 'package:accprevapp/User/home_page/Profile_page/edit_address.dart';
-import 'package:accprevapp/User/home_page/Profile_page/edit_email.dart';
-import 'package:accprevapp/User/home_page/Profile_page/edit_image.dart';
-import 'package:accprevapp/User/home_page/Profile_page/edit_name.dart';
-import 'package:accprevapp/User/home_page/Profile_page/edit_phone.dart';
+import 'package:accprevapp/User/home_page/Profile_page/aboutus_page.dart';
+import 'package:accprevapp/User/home_page/Profile_page/add_family_details.dart';
+import 'package:accprevapp/User/home_page/Profile_page/complaints_page.dart';
+import 'package:accprevapp/User/home_page/Profile_page/edit_profilepage.dart';
+import 'package:accprevapp/User/home_page/Profile_page/feedback_page.dart';
+import 'package:accprevapp/User/home_page/widgets/exit_confirmation_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:string_validator/string_validator.dart';
-import 'package:accprevapp/User/home_page/Profile_page/user_data.dart';
-import '../widgets/display_image_widget.dart';
 
-class ProfilePage extends StatefulWidget {
-  const ProfilePage({super.key});
+class profilepage extends StatefulWidget {
+  const profilepage({super.key});
 
   @override
-  State<ProfilePage> createState() => _ProfilePageState();
+  State<profilepage> createState() => _profilepageState();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
+class _profilepageState extends State<profilepage> {
+  get child => null;
+
   @override
   Widget build(BuildContext context) {
-    final user = UserData.myUser;
     return Scaffold(
-      appBar: AppBar(title: Text("My Profile"),),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Stack(
-              alignment: Alignment.centerRight,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 16,top: 5),
-                  child: CircleAvatar(
-                    backgroundImage: AssetImage("assets/images/Profile Image.png"),
-                    radius: 74,
-                  ),
-                ),
-                Positioned(
-                  right: 0,
-                  bottom: 7,
-                  child: SizedBox(
-                    height: 46,
-                    width: 46,
-                    child: FloatingActionButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
-                        side: BorderSide(color: Colors.white),
+        appBar: AppBar(
+          backgroundColor: Theme.of(context).primaryColor ,
+          title: Text('Profile'),
+          centerTitle: true,
+          titleTextStyle: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold),
+          shadowColor: Colors.white,
+          elevation: 10,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(30),
+            ),
+          ),
+          actions: <Widget>[
+            InkWell(
+              onTap: (){
+                showDialog(context: context, builder: (context) => ExitConfirmationDialog());
+              },
+              child: Icon(Icons.logout,color: Colors.white,),
+            ),
+            SizedBox(width: 20,),
+          ],
+        ),
+        body:SingleChildScrollView(
+          child: Column(
+            children: [
+              GestureDetector(
+                onTap: (){
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) =>edit_ProfilePage() ));},
+                child: Container(
+                  child: Card(
+                    elevation: 10.0,
+                    shadowColor: Colors.blueGrey,
+                    margin: EdgeInsets.only(left: 16,right: 16,top: 32,bottom: 16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius:BorderRadius.only(
+                          topRight: Radius.circular(10),
+                          topLeft: Radius.circular(10),
+                          bottomRight:Radius.circular(10),
+                          bottomLeft: Radius.circular(10)),),
+                    child: Padding(padding: EdgeInsets.all(16),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment:CrossAxisAlignment.center,
+                        children:
+                        [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Profile",
+                                style: TextStyle(
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.bold
+                                ),),
+                              Icon(Icons.arrow_forward_ios,color: Color(0xFF032737),)
+                            ],
+                          ),
+                        ],
+
                       ),
 
-                      onPressed: (){Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => edit_image())
-                      );
-                      },
 
-                      child: Icon(Icons.camera_alt_sharp, size: 25,),
+                    ),
 
                   ),
                 ),
+              ),
+              GestureDetector(
+                onTap: (){
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) =>AddComplaintsPage() ));},
+                child:Container(
+                  child: Card(elevation: 10.0,
+                    shadowColor: Colors.blueGrey,
+                    color: Color(0xFF032737),
+                    margin: EdgeInsets.only(left: 16,right: 16,top: 8,bottom: 16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius:BorderRadius.only(
+                          topRight: Radius.circular(10),
+                          topLeft: Radius.circular(10),
+                          bottomRight:Radius.circular(10),
+                          bottomLeft: Radius.circular(10)),),
+                    child: Padding(padding: EdgeInsets.all(16),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment:CrossAxisAlignment.center,
+                        children:
+                        [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Complaints",
+                                style: TextStyle(
+                                    fontSize: 24,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold
+                                ),),
+                              Icon(Icons.arrow_forward_ios,color: Colors.white,)
+                            ],
+                          ),
 
-                )],
-            ),
-            SizedBox(
-              height: 25,
-            ),
+                         ],),
 
-            ListTile(
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder:(context) => edit_name()));
-              },
+                    ),),),
+              ),
+              GestureDetector(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder:(context)=> AddFeedbackPage()));},
+                child: Container(
+                  child: Card(
+                    elevation: 10.0,
+                    shadowColor: Colors.blueGrey,
+                    margin: EdgeInsets.only(left: 16,right: 16,top: 8,bottom: 16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius:BorderRadius.only(
+                          topRight: Radius.circular(10),
+                          topLeft: Radius.circular(10),
+                          bottomRight:Radius.circular(10),
+                          bottomLeft: Radius.circular(10)),),
+                    child: Padding(padding: EdgeInsets.all(16),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment:CrossAxisAlignment.center,
+                        children:
+                        [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Feedback",
+                                style: TextStyle(
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.bold
+                                ),),
+                              Icon(Icons.arrow_forward_ios,color: Color(0xFF032737),)
+                            ],
+                          ),
+                         ],),
 
-              title: Text("Name"),
-              leading: Icon(Icons.person),
-              trailing: Icon(Icons.edit),
-              subtitle: Text(""),
-            ),
+                    ),),
+                ),
+              ),
+              GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> About()));
+                  },
+                  child:  Container(
+                    child: Card(elevation: 10.0,
+                      shadowColor: Colors.blueGrey,
+                      color: Color(0xFF032737),
+                      margin: EdgeInsets.only(left: 16,right: 16,top: 8,bottom: 16),
+                      shape: RoundedRectangleBorder(
+                        borderRadius:BorderRadius.only(
+                            topRight: Radius.circular(10),
+                            topLeft: Radius.circular(10),
+                            bottomRight:Radius.circular(10),
+                            bottomLeft: Radius.circular(10)),
+                      ),
+                      child: Padding(padding: EdgeInsets.all(16),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment:CrossAxisAlignment.center,
+                          children:
+                          [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "About Us",
+                                  style: TextStyle(
+                                      fontSize: 24,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold
+                                  ),),
+                                Icon(Icons.arrow_forward_ios,color: Colors.white,)
+                              ],
+                            ),
+                         ],),
 
-            Divider(height: 7,),
-            ListTile(
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder:(context) =>edit_email()));
-              },
-              title: Text("Email"),
-              leading: Icon(Icons.email),
-              trailing: Icon(Icons.edit),
-              subtitle: Text(""),
+                      ),),)
+              ),
+              GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> AddFamilyDetailPage()));
+                  },
+                  child:  Container(
+                    child: Card(elevation: 10.0,
+                      shadowColor: Colors.blueGrey,
+                      margin: EdgeInsets.only(left: 16,right: 16,top: 8,bottom: 8),
+                      shape: RoundedRectangleBorder(
+                        borderRadius:BorderRadius.only(
+                            topRight: Radius.circular(10),
+                            topLeft: Radius.circular(10),
+                            bottomRight:Radius.circular(10),
+                            bottomLeft: Radius.circular(10)),
+                      ),
+                      child: Padding(padding: EdgeInsets.all(16),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment:CrossAxisAlignment.center,
+                          children:
+                          [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Add Family Details",
+                                  style: TextStyle(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.bold
+                                  ),),
+                                Icon(Icons.arrow_forward_ios,color: Color(0xFF032737),)
+                              ],
+                            ),
+                         ],),
 
-            ),
-            Divider(height: 7),
-             ListTile(
-               onTap: () {
-                 Navigator.push(context, MaterialPageRoute(builder:(context) =>edit_phone()));
-               },
-             title: Text("Phone"),
-              leading: Icon(Icons.phone),
-              trailing: Icon(Icons.edit),
-               subtitle:Text("") ,
-             ),
-            Divider(height: 7),
-            ListTile(
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder:(context) =>edit_address()));
-              },
-              title: Text("Address"),
-              leading: Icon(Icons.house),
-              trailing: Icon(Icons.edit),
-              subtitle:Text("") ,
-            ),
-
-
-      ])
-        ),
-
-    );
-  }
+                      ),),)
+              ),
+              SizedBox(height: 42,),
+            ],),
+        ));}
 }
-
-
