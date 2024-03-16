@@ -65,7 +65,7 @@ class paymentState extends State<payment> {
                   obscureCardCvv: true,
                   isHolderNameVisible: true,
                   cardBgColor:  Color(0xFF032737),
-                  backgroundImage: null,
+                  backgroundImage: ('assets/071630.png.png'),
                   isSwipeGestureEnabled: true,
                   onCreditCardWidgetChange:
                       (CreditCardBrand creditCardBrand) {},

@@ -70,7 +70,7 @@ class _profilepageState extends State<profilepage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "Profile",
+                                "My Profile",
                                 style: TextStyle(
                                     fontSize: 24,
                                     fontWeight: FontWeight.bold
