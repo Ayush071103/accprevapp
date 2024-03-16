@@ -184,6 +184,7 @@ class _LoginPageState extends State<LoginPage> {
           setpreference.setString('id', data['l_id'].toString());
           setpreference.setString('name', data['l_name'].toString());
           setpreference.setString('email', data['l_email'].toString());
+          setpreference.setString('phone', data['l_phone'].toString());
           setpreference.setString('Role', data['l_role'].toString());
           if (setpreference.getString('Role') != null &&
               setpreference.getString('Role') == "1") {

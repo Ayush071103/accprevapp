@@ -45,11 +45,6 @@ class paymentState extends State<payment> {
       home: Scaffold(
         resizeToAvoidBottomInset: true,
         body: Container(
-          decoration: const BoxDecoration(
-
-
-            color: Colors.white,
-          ),
           child: SafeArea(
             child: Column(
               children: <Widget>[
@@ -69,7 +64,8 @@ class paymentState extends State<payment> {
                   obscureCardNumber: true,
                   obscureCardCvv: true,
                   isHolderNameVisible: true,
-                  cardBgColor:Colors.white,
+                  cardBgColor:  Color(0xFF032737),
+                  backgroundImage: null,
                   isSwipeGestureEnabled: true,
                   onCreditCardWidgetChange:
                       (CreditCardBrand creditCardBrand) {},
