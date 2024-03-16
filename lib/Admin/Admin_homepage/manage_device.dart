@@ -9,6 +9,6 @@ class manage_device extends StatefulWidget {
 class _manage_deviceState extends State<manage_device> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar());
+    return Scaffold();
   }
 }

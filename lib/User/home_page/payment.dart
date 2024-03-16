@@ -69,7 +69,7 @@ class paymentState extends State<payment> {
                   obscureCardNumber: true,
                   obscureCardCvv: true,
                   isHolderNameVisible: true,
-                  cardBgColor: Colors.black,
+                  cardBgColor:Colors.white,
                   isSwipeGestureEnabled: true,
                   onCreditCardWidgetChange:
                       (CreditCardBrand creditCardBrand) {},
@@ -188,6 +188,7 @@ class paymentState extends State<payment> {
                             ),
                           ),
                         ),
+                        SizedBox(height: 20,)
                       ],
                     ),
                   ),

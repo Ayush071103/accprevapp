@@ -1,10 +1,10 @@
-import 'dart:async';
+import 'dart:convert';
 
 import 'package:accprevapp/User/home_page/widgets/textFromField.dart';
 import 'package:flutter/material.dart';
 import 'package:string_validator/string_validator.dart';
 import 'package:accprevapp/User/home_page/Profile_page/user_data.dart';
-import '../widgets/display_image_widget.dart';
+import 'package:http/http.dart' as http;
 
 class edit_ProfilePage extends StatefulWidget {
   const edit_ProfilePage({super.key});
@@ -23,6 +23,27 @@ class _ProfilePageState extends State<edit_ProfilePage> {
   var logindata;
   var data;
   bool isLoading = false;
+
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  void getData() async {
+    setState(() {
+      isLoading = true;
+    });
+    http.Response response = await http.get(
+        Uri.parse("https://accprevapp.000webhostapp.com/API/registration.php"));
+
+    if (response.statusCode == 200) {
+      data = response.body;
+      setState(() {
+        isLoading = false;
+        data = jsonDecode(data!)['data'];
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,17 +82,6 @@ class _ProfilePageState extends State<edit_ProfilePage> {
                   textEditingController: nameController,
                   icon: Icons.person,
                   hint: "Name",
-                ),
-              ),
-              SizedBox(height: 30,),
-              Container(
-                padding: EdgeInsets.only(left: 20, right: 20),
-                child: CustomTextField(
-                  errorMsg: 'Please enter Adress',
-                  keyboardType: TextInputType.streetAddress,
-                  textEditingController: addressController,
-                  icon: Icons.location_on_rounded,
-                  hint: "Address",
                 ),
               ),
               SizedBox(height: 30,),

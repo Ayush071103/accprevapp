@@ -108,10 +108,13 @@ class ProductPage extends StatelessWidget {
                 child: Text('Buy Now'),
                 style: ElevatedButton.styleFrom(
                   elevation: 5,
-                  backgroundColor: Color(0xff08364B),
+                  backgroundColor: Color(0xFF032737),
                 ),
+
               ),
+
             ),
+            SizedBox(height: 20,)
           ],
         ),
       ),
