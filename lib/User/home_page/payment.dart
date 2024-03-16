@@ -1,6 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/credit_card_brand.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
 
 
 class payment extends StatefulWidget {
@@ -21,6 +26,11 @@ class paymentState extends State<payment> {
   OutlineInputBorder? border;
   TextEditingController bankName = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  TextEditingController areaNameController = TextEditingController();
+  TextEditingController messageController = TextEditingController();
+  var logindata;
+  var data;
+  bool isLoading = false;
 
   @override
   void initState() {
@@ -197,14 +207,47 @@ class paymentState extends State<payment> {
     );
   }
 
-  void _onValidate() {
+  void _onValidate() async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final form = formKey.currentState;
     if (formKey.currentState!.validate()) {
-      _handleCheckout(context);
-    } else {
-      _showValidDialog(context, "Not Valid", "Try Again !!!");
-    }
-  }
+      setState(() {
+        isLoading = true;
+      });
+      final login_url = Uri.parse(
+          "https://accprevapp.000webhostapp.com/API/insert_book.php");
+      final response = await http
+          .post(login_url, body: {
+        "l_id": prefs.getString('id'),
+        "b_amount": "1000"
 
+      });
+      if (response.statusCode == 200) {
+        logindata = jsonDecode(response.body);
+        print(data);
+        setState(() {
+          isLoading = false;
+        });
+        if (logindata['error'] == false) {
+          Fluttertoast.showToast(
+              msg: logindata['message'].toString(),
+              toastLength: Toast.LENGTH_LONG,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIosWeb: 2
+          );
+          Navigator.of(context).pop();
+        }else{
+          Fluttertoast.showToast(
+              msg: logindata['message'].toString(),
+              toastLength: Toast.LENGTH_LONG,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIosWeb: 2
+          );
+        }
+      }
+    }
+
+  }
   void onCreditCardModelChange(CreditCardModel? creditCardModel) {
     setState(() {
       cardNumber = creditCardModel!.cardNumber;
@@ -232,23 +275,25 @@ class paymentState extends State<payment> {
     );
   }
 
-void _handleCheckout(BuildContext context) {
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text("Confirmation"),
-        content: Text("Your purchase is complete."),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            child: Text("OK"),
-          ),
-        ],
-      );
-    },
-  );
-}
+  void _handleCheckout(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Confirmation"),
+          content: Text("Your purchase is complete."),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text("OK"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+
 }
