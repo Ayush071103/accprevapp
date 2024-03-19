@@ -1,17 +1,16 @@
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-class TempraturePage extends StatefulWidget {
+class TemperaturePage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return _TempraturePageState();
+    return _TemperaturePageState();
   }
 }
 
-class _TempraturePageState extends State<TempraturePage> {
+class _TemperaturePageState extends State<TemperaturePage> {
   String? data;
   var all_data;
   bool isLoading = false;
@@ -44,7 +43,7 @@ class _TempraturePageState extends State<TempraturePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor ,
-        title: Text('Temprature value'),
+        title: Text('Temperature value'),
         titleTextStyle: TextStyle(color: Colors.white,fontSize: 20),
         shadowColor: Colors.white,
         elevation: 10,

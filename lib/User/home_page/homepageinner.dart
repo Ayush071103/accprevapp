@@ -94,7 +94,7 @@ class homepageinnerstate extends State<homepageinner>{
                 onTap: (){
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => TempraturePage()),
+                    MaterialPageRoute(builder: (context) => TemperaturePage()),
                   );
                 },
                 child: Container(
