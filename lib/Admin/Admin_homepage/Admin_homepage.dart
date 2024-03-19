@@ -161,7 +161,7 @@ class _Admin_homepageState extends State<Admin_homepage> {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => UserListPage()));
                 },),
-              ListTile(title:Text("Manage Devices"), leading: Icon(Icons.device_hub),
+              ListTile(title:Text("Booking Request"), leading: Icon(Icons.device_hub),
                   onTap: (){
                   }),
               ListTile(title:Text("Complaints"), leading: Icon(Icons.mail),
