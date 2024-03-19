@@ -1,6 +1,7 @@
 import 'package:accprevapp/Admin/Admin_homepage/ComplaintsListPage.dart';
 import 'package:accprevapp/Admin/Admin_homepage/FeedbackListPage.dart';
 import 'package:accprevapp/Admin/Admin_homepage/UserListPage.dart';
+import 'package:accprevapp/Admin/Admin_homepage/manage_device.dart';
 import 'package:accprevapp/User/home_page/widgets/exit_confirmation_dialog.dart';
 import 'package:flutter/material.dart';
 class Admin_homepage extends StatefulWidget {
@@ -82,15 +83,15 @@ class _Admin_homepageState extends State<Admin_homepage> {
                 elevation: 8,
                 child:InkWell(
                   onTap: (){
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) => UserListPage()),
-                    // );
+                     Navigator.push(
+                       context,
+                       MaterialPageRoute(builder: (context) => booking_request()),
+                     );
                   },
                   child: Container(
                       height: 200,
                       alignment: Alignment.center,
-                      child: Text("Manage Devices",style: TextStyle(color: Colors.white,  fontSize: 20),)),
+                      child: Text("Manage Bookings",style: TextStyle(color: Colors.white,  fontSize: 20),)),
                 ),
               ),
               Card(

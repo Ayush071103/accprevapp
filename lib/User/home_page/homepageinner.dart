@@ -100,7 +100,7 @@ class homepageinnerstate extends State<homepageinner>{
                 child: Container(
                     height: 200,
                     alignment: Alignment.center,
-                    child: Text("TEMPRATURE SENSOR",style: TextStyle(color: Colors.white, fontSize: 20))),
+                    child: Text("TEMPERATURE SENSOR",style: TextStyle(color: Colors.white, fontSize: 20))),
               ),
             ),
             Card(
