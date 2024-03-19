@@ -91,7 +91,7 @@ class _Admin_homepageState extends State<Admin_homepage> {
                   child: Container(
                       height: 200,
                       alignment: Alignment.center,
-                      child: Text("Manage Bookings",style: TextStyle(color: Colors.white,  fontSize: 20),)),
+                      child: Text("Booking Request",style: TextStyle(color: Colors.white,  fontSize: 20),)),
                 ),
               ),
               Card(
