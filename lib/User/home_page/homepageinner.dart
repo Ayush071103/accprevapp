@@ -3,7 +3,6 @@ import 'package:accprevapp/User/home_page/sensors/Temperature_sensor.dart';
 import 'package:accprevapp/User/home_page/sensors/flame_sensor.dart';
 import 'package:accprevapp/User/home_page/sensors/smoke_sensor.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 
 class homepageinner extends StatefulWidget{
   @override

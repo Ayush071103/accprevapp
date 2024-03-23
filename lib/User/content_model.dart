@@ -10,22 +10,28 @@ List<UnbordingContent> contents = [
   UnbordingContent(
       title: 'Get Started',
       image: 'assets/introicon.png',
-      discription: "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the "
-          "industry's standard dummy text ever since the 1500s, "
-          "when an unknown printer took a galley of type and scrambled it "
+      discription: "Introducing our groundbreaking IoT sensor app, revolutionizing connectivity and data insights. "
+          "Seamlessly monitor and manage your environment with real-time data streams, empowering informed decisions. "
+
   ),
   UnbordingContent(
-      title: 'Purchase Device',
+      title: 'Book Device',
       image: 'assets/purchase.png',
-      discription: "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the "
-          "industry's standard dummy text ever since the 1500s, "
-          "when an unknown printer took a galley of type and scrambled it "
+      discription: "Experience the future of smart living with our IoT sensor device, designed for effortless integration and unparalleled performance. "
+          "designed for effortless integration and unparalleled performance. "
+          "Book now and unlock the potential of connected living."
+
+
+
   ),
   UnbordingContent(
       title: 'Enjoy the ride',
       image: 'assets/car.png',
-      discription: "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the "
-          "industry's standard dummy text ever since the 1500s, "
-          "when an unknown printer took a galley of type and scrambled it "
+      discription: "After installing our app, embark on worry-free journeys with real-time monitoring of your car's vital metrics."
+          "Receive instant alerts and insights, ensuring a smooth and secure ride every time, "
+          "empowering you to focus on the road ahead."
+
+
+
   ),
 ];

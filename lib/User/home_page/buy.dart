@@ -68,7 +68,7 @@ class ProductPage extends StatelessWidget {
             ),
             SizedBox(height: 10),
             Text(
-              'Device Description',
+              'This device helps you to monitor the levels of the sensors which are flame sensor, gas sensor, smoke sensor and temperature sensor. And alerts when any sensor exceeds the limit.',
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(height: 20),
