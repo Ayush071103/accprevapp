@@ -129,7 +129,8 @@ class _profilepageState extends State<profilepage> {
               ),
               GestureDetector(
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder:(context)=> AddFeedbackPage()));},
+                  Navigator.push(context, MaterialPageRoute(builder:(context)=> AddFeedbackPage()));
+                  },
                 child: Container(
                   child: Card(
                     elevation: 10.0,

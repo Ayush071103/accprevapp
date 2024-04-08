@@ -26,7 +26,7 @@ class _TemperaturePageState extends State<TemperaturePage> {
       isLoading = true;
     });
     http.Response response = await http.get(Uri.parse(
-        "https://accprevapp.000webhostapp.com/API/fetch_temperature_sensor.php"));
+        "https://accprevappp.000webhostapp.com/API/fetch_temperature_sensor.php"));
 
     if (response.statusCode == 200) {
       data = response.body;
@@ -98,7 +98,7 @@ class _TemperaturePageState extends State<TemperaturePage> {
                     child: Row(
                       children: [
                         Text("Value: ", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
-                        Text(jsonDecode(data!)['data'][index]['temp_value'],
+                        Text(jsonDecode(data!)['data'][index]['value'],
                             style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal))
                       ],
                     ),

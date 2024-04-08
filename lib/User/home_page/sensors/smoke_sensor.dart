@@ -27,7 +27,7 @@ class _SmokePageState extends State<SmokePage> {
       isLoading = true;
     });
     http.Response response = await http.get(
-        Uri.parse("https://accprevapp.000webhostapp.com/API/fetch_smoke_sensor.php"));
+        Uri.parse("https://accprevappp.000webhostapp.com/API/fetch_smoke_sensor.php"));
 
     if (response.statusCode == 200) {
       data = response.body;
@@ -99,7 +99,7 @@ class _SmokePageState extends State<SmokePage> {
                     child: Row(
                       children: [
                         Text("Value: ", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
-                        Text(jsonDecode(data!)['data'][index]['smoke_value'],
+                        Text(jsonDecode(data!)['data'][index]['value'],
                             style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal))
                       ],
                     ),

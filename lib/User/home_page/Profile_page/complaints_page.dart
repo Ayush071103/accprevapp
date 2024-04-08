@@ -123,12 +123,10 @@ class _AddComplaintsPageState extends State<AddComplaintsPage> {
         isLoading = true;
       });
       final login_url = Uri.parse(
-          "https://accprevapp.000webhostapp.com/API/insert_complaints.php");
+          "https://accprevappp.000webhostapp.com/API/insert_complaints.php");
       final response = await http
           .post(login_url, body: {
         "l_id": prefs.getString('id'),
-        "c_date_time": "2024-03-09",
-        "c_status": "mm",
         "c_message": messageController.text,
       });
       if (response.statusCode == 200) {

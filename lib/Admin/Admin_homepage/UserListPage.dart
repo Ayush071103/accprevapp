@@ -31,7 +31,7 @@ class _UserListPageState extends State<UserListPage> {
       isLoading = true;
     });
     http.Response response = await http.get(
-        Uri.parse("https://accprevapp.000webhostapp.com/API/A_fetch_user_list.php"));
+        Uri.parse("https://accprevappp.000webhostapp.com/API/fetchapi.php"));
 
     if (response.statusCode == 200) {
       data = response.body;
@@ -140,7 +140,7 @@ class _UserListPageState extends State<UserListPage> {
          isLoading = true;
        });
       final login_url = Uri.parse(
-          "https://accprevapp.000webhostapp.com/API/A_userlist_delete.php");
+          "https://accprevappp.000webhostapp.com/API/A_userlist_delete.php");
       final response = await http
           .post(login_url, body: {
         "l_id": id,

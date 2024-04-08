@@ -151,7 +151,7 @@ class _ProfilePageState extends State<edit_ProfilePage> {
         isLoading = true;
       });
       final login_url = Uri.parse(
-          "https://accprevapp.000webhostapp.com/API/updateprofile.php");
+          "https://accprevappp.000webhostapp.com/API/updateprofile.php");
       final response = await http
           .post(login_url, body: {
         "l_id": setpreference.getString('id'),

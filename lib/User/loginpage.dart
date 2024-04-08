@@ -166,7 +166,7 @@ class _LoginPageState extends State<LoginPage> {
         isLoading = true;
       });
       final login_url =
-          Uri.parse("https://accprevapp.000webhostapp.com/API/login.php");
+          Uri.parse("https://accprevappp.000webhostapp.com/API/login.php");
       final response = await http.post(login_url, body: {
         "l_email": nameController.text,
         "l_pass": passwordController.text

@@ -26,7 +26,7 @@ class _MQ4PageState extends State<MQ4Page> {
       isLoading = true;
     });
     http.Response response = await http
-        .get(Uri.parse("https://accprevapp.000webhostapp.com/API/fetch_mq4gas_sensor.php"));
+        .get(Uri.parse("https://accprevappp.000webhostapp.com/API/fetch_mq4gas_sensor.php"));
 
     if (response.statusCode == 200) {
       data = response.body;
@@ -99,7 +99,7 @@ class _MQ4PageState extends State<MQ4Page> {
                     child: Row(
                       children: [
                         Text("Value: ", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
-                        Text(jsonDecode(data!)['data'][index]['mq4_value'],
+                        Text(jsonDecode(data!)['data'][index]['value'],
                             style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal))
                       ],
                     ),

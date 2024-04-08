@@ -157,7 +157,7 @@ class _SignupPageState extends State<SignupPage> {
         isLoading = true;
       });
       final login_url = Uri.parse(
-          "https://accprevapp.000webhostapp.com/API/registration.php");
+          "https://accprevappp.000webhostapp.com/API/registration.php");
       final response = await http
           .post(login_url, body: {
         "l_name": usernameController.text,

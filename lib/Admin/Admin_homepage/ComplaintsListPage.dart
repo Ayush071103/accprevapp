@@ -27,14 +27,14 @@ class _ComplaintsListPageState extends State<ComplaintsListPage> {
       isLoading = true;
     });
     http.Response response = await http.get(
-        Uri.parse("https://accprevapp.000webhostapp.com/API/A_fetch_complaints.php"));
+        Uri.parse("https://accprevappp.000webhostapp.com/API/complainfetch.php"));
 
     if (response.statusCode == 200) {
       data = response.body;
       print(data);
       setState(() {
         isLoading = false;
-        all_data = jsonDecode(data!)['data'];
+        all_data = jsonDecode(data!)['COMPLAIN'];
       });
     }
   }
@@ -90,7 +90,7 @@ class _ComplaintsListPageState extends State<ComplaintsListPage> {
                     child: Row(
                       children: [
                         Text("User Name: ", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
-                        Text(jsonDecode(data!)['data'][index]['user_name'],
+                        Text(jsonDecode(data!)['COMPLAIN'][index]['USER_NAME'],
                             style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal))
                       ],
                     ),
@@ -99,7 +99,7 @@ class _ComplaintsListPageState extends State<ComplaintsListPage> {
                     child: Row(
                       children: [
                         Text("Email: ", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
-                        Text(jsonDecode(data!)['data'][index]['email'],
+                        Text(jsonDecode(data!)['COMPLAIN'][index]['USER_EMAIL'],
                             style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal))
                       ],
                     ),
@@ -108,7 +108,7 @@ class _ComplaintsListPageState extends State<ComplaintsListPage> {
                     child: Row(
                       children: [
                         Text("Phone No: ", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
-                        Text(jsonDecode(data!)['data'][index]['phone'],
+                        Text(jsonDecode(data!)['COMPLAIN'][index]['USER_PHONE'],
                             style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal))
                       ],
                     ),
@@ -117,7 +117,7 @@ class _ComplaintsListPageState extends State<ComplaintsListPage> {
                     child: Row(
                       children: [
                         Text("Message: ", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
-                        Text(jsonDecode(data!)['data'][index]['c_message'],
+                        Text(jsonDecode(data!)['COMPLAIN'][index]['COMMENT'],
                             style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal))
                       ],
                     ),

@@ -214,7 +214,7 @@ class paymentState extends State<payment> {
         isLoading = true;
       });
       final login_url = Uri.parse(
-          "https://accprevapp.000webhostapp.com/API/insert_book.php");
+          "https://accprevappp.000webhostapp.com/API/insert_book.php");
       final response = await http
           .post(login_url, body: {
         "l_id": prefs.getString('id'),

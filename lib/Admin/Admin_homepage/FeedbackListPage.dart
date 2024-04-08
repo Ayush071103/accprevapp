@@ -27,14 +27,14 @@ class _FeedbackListPageState extends State<FeedbackListPage> {
       isLoading = true;
     });
     http.Response response = await http.get(
-        Uri.parse("https://accprevapp.000webhostapp.com/API/A_fetch_feedback.php"));
+        Uri.parse("https://accprevappp.000webhostapp.com/API/feedbackfetch.php"));
 
     if (response.statusCode == 200) {
       data = response.body;
       print(data);
       setState(() {
         isLoading = false;
-        all_data = jsonDecode(data!)['data'];
+        all_data = jsonDecode(data!)['FEEDBACK'];
       });
     }
   }
@@ -90,7 +90,7 @@ class _FeedbackListPageState extends State<FeedbackListPage> {
                     child: Row(
                       children: [
                         Text("User Name: ", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
-                        Text(jsonDecode(data!)['data'][index]['l_name'],
+                        Text(jsonDecode(data!)['FEEDBACK'][index]['USER_NAME'],
                             style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal))
                       ],
                     ),
@@ -99,7 +99,7 @@ class _FeedbackListPageState extends State<FeedbackListPage> {
                     child: Row(
                       children: [
                         Text("Email: ", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
-                        Text(jsonDecode(data!)['data'][index]['l_email'],
+                        Text(jsonDecode(data!)['FEEDBACK'][index]['USER_EMAIL'],
                             style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal))
                       ],
                     ),
@@ -108,7 +108,7 @@ class _FeedbackListPageState extends State<FeedbackListPage> {
                     child: Row(
                       children: [
                         Text("Phone No: ", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
-                        Text(jsonDecode(data!)['data'][index]['l_phone'],
+                        Text(jsonDecode(data!)['FEEDBACK'][index]['USER_PHONE'],
                             style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal))
                       ],
                     ),
@@ -117,7 +117,7 @@ class _FeedbackListPageState extends State<FeedbackListPage> {
                     child: Row(
                       children: [
                         Text("Review: ", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
-                        Text(jsonDecode(data!)['data'][index]['f_review'],
+                        Text(jsonDecode(data!)['FEEDBACK'][index]['COMMENT'],
                             style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal))
                       ],
                     ),

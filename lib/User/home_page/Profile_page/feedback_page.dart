@@ -123,7 +123,7 @@ class _AddFeedbackPageState extends State<AddFeedbackPage> {
         isLoading = true;
       });
       final login_url = Uri.parse(
-          "https://accprevapp.000webhostapp.com/API/insert_feedback.php");
+          "https://accprevappp.000webhostapp.com/API/insert_feedback.php");
       final response = await http
           .post(login_url, body: {
         "l_id": prefs.getString('id'),

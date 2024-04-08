@@ -27,7 +27,7 @@ class booking_requestState extends State<booking_request> {
       isLoading = true;
     });
     http.Response response = await http.get(
-        Uri.parse("https://accprevapp.000webhostapp.com/API/A_fetch_booking.php"));
+        Uri.parse("https://accprevappp.000webhostapp.com/API/A_fetch_booking.php"));
 
     if (response.statusCode == 200) {
       data = response.body;
