@@ -28,7 +28,32 @@ class _AboutState extends State<About> {
             ),
           ),
 
-        )
+        ),
+
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          SizedBox(height:20),
+          Expanded(
+            child: Image.asset(
+              'assets/about us.jpg',
+              fit: BoxFit.fill,
+            ),
+          ),
+          Expanded(
+            child: Center(
+              child: Text(
+                'We are a team working towards increasing the safety of the automobile. We are a small group of three friends who thought about enhancing the safety and decided to build an application for it.',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
 
 

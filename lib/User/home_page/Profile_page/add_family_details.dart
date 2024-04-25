@@ -68,7 +68,7 @@ class _AddFamilyDetailPageState extends State<AddFamilyDetailPage> {
               Container(
                 padding: EdgeInsets.only(left: 20, right: 20),
                 child: CustomTextField(
-                  errorMsg: 'Please enter Adress',
+                  errorMsg: 'Please enter Address',
                   keyboardType: TextInputType.streetAddress,
                   textEditingController: addressController,
                   icon: Icons.location_on_rounded,
