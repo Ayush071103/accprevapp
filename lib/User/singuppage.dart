@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:accprevapp/User/PinCodeVerificationScreen.dart';
 import 'package:accprevapp/User/loginpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -169,8 +170,6 @@ class _SignupPageState extends State<SignupPage> {
       });
       if (response.statusCode == 200) {
         logindata = jsonDecode(response.body);
-        data =
-        jsonDecode(response.body)['user'];
         print(logindata);
         setState(() {
           isLoading = false;
@@ -182,9 +181,9 @@ class _SignupPageState extends State<SignupPage> {
               gravity: ToastGravity.BOTTOM,
               timeInSecForIosWeb: 2
           );
-          Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (context) => LoginPage()),
-                  (route) => false);
+          Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => PinCodeVerificationScreen(
+                phoneNumber: phonenumberController.text,userID: logindata['l_id'].toString(),)),);
         }else{
           Fluttertoast.showToast(
               msg: logindata['message'].toString(),
